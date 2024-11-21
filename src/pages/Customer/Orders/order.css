@@ -1,0 +1,81 @@
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    vertical-align: top;
+    max-height: 40px;
+}
+
+.table tbody tr {
+    height: max-content;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #e7e5e5b2;
+    color: #334147;
+}
+
+.table tbody tr:hover {
+    background-color: #ddd;
+}
+
+.btn-view-more {
+    font-size: 20;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.btn-view-more:hover {
+    color: #17469e;
+}
+
+.action-icons {
+    display: flex;
+}
+
+.action-icons>div {
+    margin-right: 5px;
+}
+
+.ant-image-img .order-img {
+    z-index: 100001;
+}
+
+.order-img.ant-image-preview-img {
+    margin-top: 80px;
+}
+
+.textarea-chat {
+    padding: 10px 5px;
+    margin: 0;
+    width: 260px;
+    border: none;
+    margin-left: 7px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    height: 40px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    font-size: 14px;
+    resize: none;
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+
+
+.css-o4b71y-MuiAccordionSummary-content.Mui-expanded {
+    margin: 5px !important;
+}
+
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
+    min-height: 30px !important;
+}

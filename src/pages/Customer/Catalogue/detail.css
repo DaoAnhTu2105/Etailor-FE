@@ -1,0 +1,36 @@
+.product-detail-wrapper {
+    display: grid;
+    grid-template-columns: 15% 40% 40%;
+    column-gap: 20px;
+}
+
+.product-detail-items {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.product-detail-preview {
+    justify-content: end;
+    position: absolute;
+    left: -12px
+}
+
+.product-component-style-items {
+    padding-right: 10px;
+    height: fit-content;
+}
+
+.btn-contact {
+    padding: 10px;
+    background-color: #080404;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.mySwiper1 {
+    width: 450px;
+    height: 75px;
+}

@@ -1,0 +1,36 @@
+.ant-menu-item-selected {
+    background-color: #9F78FF !important;
+    color: white !important;
+}
+
+.ant-menu-item-active {
+    background-color: white !important;
+    color: #9F78FF !important;
+}
+
+.ant-menu-submenu-title {
+    color: #9F78FF !important;
+}
+
+.ant-menu-submenu-title {
+    color: black !important;
+}
+
+
+
+.ant-menu-submenu-open .ant-menu-submenu-title {
+    color: #9F78FF !important;
+}
+
+.menu-content {
+    max-height: 100vh;
+    overflow-y: scroll;
+}
+
+.menu-content::-webkit-scrollbar {
+    display: none;
+}
+
+.ant-layout-sider-trigger {
+    border-right: 1px solid #9F78FF;
+}

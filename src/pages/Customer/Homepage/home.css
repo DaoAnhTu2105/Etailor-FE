@@ -1,0 +1,230 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 90%;
+    height: 600px;
+    object-fit: cover;
+}
+
+.homepage-container {
+    width: 100vw;
+    padding-top: 100px;
+}
+
+.banner-swiper {
+    padding: 0 50px;
+    position: relative;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        clip-path: inset(0% 60% 0% 50%);
+    }
+
+    to {
+        opacity: 1;
+        clip-path: inset(0% 0% 0% 0%);
+    }
+}
+
+.catalog-wrapper>img {
+    animation: auto linear reveal both;
+    animation-timeline: view();
+    animation-range: entry 25% cover 50%;
+}
+
+.wrapper-body {
+    width: 100vw;
+    height: 100%;
+    padding: 80px 100px 20px 200px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    animation-name: learn;
+    animation-duration: 5s;
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    width: 247px;
+    height: 310px;
+}
+
+.step-img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.step-des {
+    justify-content: center;
+}
+
+.step-img:hover {
+    transform: scale(1.2);
+}
+
+.dot {
+    height: 35px;
+    width: 35px;
+    background-color: #C6A16E;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.dot-hover {
+    height: 35px;
+    width: 35px;
+    background-color: #fff;
+    border: solid 2px #C6A16E;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C6A16E;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.text-hover {
+    color: #C6A16E !important;
+}
+
+.step-detail {
+    display: flex;
+    padding-top: 20px;
+}
+
+
+.step-detail>h1 {
+    padding-left: 20px;
+
+}
+
+
+
+
+.button1 {
+    background: none;
+    border: 2px solid;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+}
+
+.btn-main {
+    border-radius: 5px;
+    background-color: #9F78FF;
+    transition: 0.8s;
+    color: #fff;
+    line-height: 1;
+    border: none;
+    margin: 0.5em;
+    padding: 1em 1.8em;
+    cursor: pointer;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.btn-main:hover,
+.btn-main:focus {
+    color: #fff;
+    box-shadow: inset 11em 0 0 0 #5c429e;
+}
+
+
+.catalog-wrapper {
+    position: relative;
+    cursor: pointer;
+    width: 275px;
+    height: 375px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 5px 10px 18px #888888;
+}
+
+.details {
+    position: absolute;
+    bottom: -80px;
+    justify-content: center;
+    width: 275px;
+    height: 70px;
+    background-color: #313132a7;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
+    z-index: 2;
+    align-items: center;
+    display: flex;
+    transition: 0.7s;
+}
+
+.details .title {
+    color: #fff;
+}
+
+.catalog-wrapper:hover .details {
+    bottom: 0;
+    background-color: #000000a7;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
+    z-index: 3;
+}
+
+.catalog-wrapper:hover>.catalog-wrapper-btn {
+    position: absolute;
+    top: 150px;
+    height: 60px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 275px;
+}
+
+.catalog-wrapper-btn {
+    position: absolute;
+    top: 150px;
+    height: 60px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 275px;
+    transition: 2s;
+    display: none;
+    transition-timing-function: ease-in-out;
+}
+
+
+.wrapper-container-content {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.product-title {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}

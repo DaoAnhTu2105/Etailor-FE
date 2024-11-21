@@ -1,0 +1,137 @@
+.catalogue-wrapper {
+    margin: 0
+}
+
+.catalog-section-1 {
+    margin-bottom: 20px;
+}
+
+.catalog-1 {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    margin-top: 0;
+    width: 236px;
+    height: 315px;
+}
+
+.catalog-1:hover img {
+    transform: scale(1.4);
+
+}
+
+.catalog-1 img {
+    transition: transform .8s ease;
+    overflow: hidden;
+}
+
+.details-product {
+    position: absolute;
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+    bottom: 0;
+    background-color: #313132a7;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
+    z-index: 2;
+    align-items: center;
+    display: flex;
+    transition: 0.7s;
+}
+
+.details-product .title {
+    color: #fff;
+}
+
+.catalog-1:hover .details {
+    bottom: 0;
+    background-color: #000000a7;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.219);
+    z-index: 3;
+}
+
+.catalog-title {
+    width: fit-content !important;
+    border-bottom: "2px #140c40";
+    height: 40px;
+    min-width: 20px;
+    margin-left: 40px;
+}
+
+.header-catalog-title {
+    display: flex;
+    position: relative;
+    margin-top: 40px;
+    height: 80px;
+    margin: 20px 40px 0 40px;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.view-more-btn {
+    position: absolute;
+    right: 0;
+    height: 40px;
+    align-items: center;
+    border-bottom: 1px solid rgb(159, 120, 255);
+    display: flex;
+    transition: 1.6s;
+    margin: 10px;
+    padding: 14px;
+    cursor: pointer;
+}
+
+.view-more-btn>p {
+    color: rgb(159, 120, 255);
+}
+
+
+.view-more-btn:hover,
+.view-more-btn:focus {
+    box-shadow: inset 11em 0 0 0 rgb(159, 120, 255);
+}
+
+.view-more-btn:hover>p {
+    color: #fff;
+}
+
+.card {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.card:hover img {
+    transform: scale(1.4);
+
+}
+
+.card img {
+    transition: transform .8s ease;
+    overflow: hidden;
+}
+
+.media-content {
+    display: flex;
+    justify-content: flex-start;
+
+}
+.media-content p {
+    max-width: 300px; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+}
+.content {
+    text-align: start;
+    margin-bottom: 2em;
+    max-height: 1.8em;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card .media {
+    margin: 0 !important;
+}

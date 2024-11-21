@@ -1,0 +1,145 @@
+/* .admin-account-manager-main-container {
+    position: relative;
+}
+
+.admin-account-manager-header {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    width: 1180px;
+    height: 190px;
+    position: absolute;
+    left: 30px;
+    top: 20px;
+}
+
+.admin-account-manager-content {
+    background-color: #FFFFFF;
+    width: 1180px;
+    height: 545px;
+    position: absolute;
+    left: 30px;
+    top: 220px;
+    border-radius: 10px;
+    padding: 20px;
+} */
+
+.admin-header {
+    border-radius: 10px;
+}
+
+.admin-content {
+    border-radius: 10px;
+    padding: 20px 20px;
+    background-color: #FFFFFF;
+    margin: 10px 0px;
+}
+
+.admin-cus-header {
+    border-radius: 10px;
+}
+
+.admin-cus-content {
+    border-radius: 10px;
+    padding: 20px 20px;
+    background-color: #FFFFFF;
+    margin: 10px 0px;
+}
+
+.system-config-header {
+    border-radius: 10px;
+}
+
+.system-config-content {
+    border-radius: 10px;
+    padding: 20px 20px;
+    background-color: #FFFFFF;
+    margin: 10px 0px;
+}
+
+.admin-content::-webkit-scrollbar {
+    display: none;
+}
+
+.admin-cus-content::-webkit-scrollbar {
+    display: none;
+}
+
+.system-config-content::-webkit-scrollbar {
+    display: none;
+}
+
+/* .admin-account-system-main-container {
+    width: 100%;
+}
+
+.admin-account-system-header {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    width: 97%;
+    height: 190px;
+    margin: 20px 30px;
+}
+
+.admin-account-system-content {
+    background-color: #FFFFFF;
+    width: 97%;
+    height: 580px;
+    border-radius: 10px;
+    padding: 20px;
+    padding-bottom: 0px;
+    overflow-y: scroll;
+    margin: 20px 30px;
+    margin-bottom: 0px;
+
+}
+
+.admin-account-system-content::-webkit-scrollbar {
+    display: none;
+}
+
+.modal-account-admin::-webkit-scrollbar {
+    display: none;
+}
+
+.admin-paginate {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+} */
+
+/* 
+.pagination {
+    color: #000000;
+}
+
+.page-item-previous {
+    padding: 10px 20px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.page-item-next {
+    padding: 10px 20px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin-left: 10px;
+    color: black !important;
+}
+
+.page-item {
+    padding: 10px 20px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+.active {
+    background-color: #172039;
+    color: #FFFFFF;
+}
+
+.active:hover {
+    color: #FFFFFF;
+
+} */

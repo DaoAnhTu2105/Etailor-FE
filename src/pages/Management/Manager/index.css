@@ -1,0 +1,223 @@
+.manager-header {
+    border-radius: 10px;
+}
+
+.manager-content {
+    border-radius: 10px;
+    padding: 20px 20px;
+    background-color: #FFFFFF;
+    margin: 10px 0px;
+}
+
+.manager-task-content {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin: 10px 0px;
+}
+
+
+.manager-content::-webkit-scrollbar {
+    display: none;
+}
+
+.input-image {
+    display: none;
+}
+
+.gutter-row::-webkit-scrollbar {
+    display: none;
+}
+
+.ant-btn-default {
+    border: 1px solid #9F78FF;
+    color: #9F78FF;
+    transition: 0.8s;
+    font-weight: 700;
+}
+
+.ant-btn-default:hover,
+.ant-btn-default:focus {
+    color: #9F78FF !important;
+    border: 1px solid #9F78FF !important;
+}
+
+.ant-btn-icon-only.ant-input-search-button {
+    background-color: #9F78FF;
+    color: #FFFFFF !important;
+
+}
+
+.ant-input-outlined:hover {
+    border: 1px solid #9F78FF !important;
+    box-shadow: none !important;
+}
+
+.ant-steps-item-active .ant-steps-item-icon {
+    background-color: #9F78FF !important;
+    border: 1px solid #9F78FF !important;
+}
+
+.ant-btn-primary {
+    background-color: #9F78FF !important;
+}
+
+.ant-steps-item-finish .ant-steps-item-icon {
+    background-color: #9f78ff4f !important;
+    color: #9F78FF !important;
+}
+
+.ant-steps-finish-icon {
+    color: #9F78FF !important;
+}
+
+.ant-btn-dangerous {
+    background-color: red !important;
+}
+
+.ant-btn .ant-btn-primary .ant-btn-icon-only {
+    background-color: blue !important;
+}
+
+/* .ant-select-selection-overflow {
+
+    height: 100px;
+    overflow-y: scroll;
+}
+
+.ant-select-selection-overflow::-webkit-scrollbar {
+    display: none;
+}
+
+.ant-select-selection-overflow-item #product_template_step_3 {
+    padding: 5px;
+    text-align: center;
+
+}
+
+
+.ant-select-selection-item span {
+    font-size: 15px;
+}
+
+.ant-select-selection-overflow-item .ant-select-selection-item {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: #9e78ff1a !important;
+    border: 1px solid #9F78FF !important;
+    color: #9F78FF !important;
+    margin: 10px;
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: bold;
+} */
+
+.ant-select-selection-overflow-item .ant-select-selection-item {
+
+    background-color: #9e78ff1a !important;
+    border: 1px solid #9F78FF !important;
+    color: #9F78FF !important;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.ant-select-selection-item-remove span {
+    margin-left: 25px;
+    color: #9F78FF !important;
+}
+
+.btn-automation:hover {
+    transform: scale(1.1)
+}
+
+.anticon.anticon-down.ant-select-suffix {
+    font-size: 20px;
+}
+
+.anticon.anticon-search.ant-select-suffix {
+    font-size: 20px;
+}
+
+.ant-select-selector:hover {
+    border: 1px solid #9F78FF !important;
+}
+
+.ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload.ant-upload-select {
+    width: 130px !important;
+    height: 130px !important;
+    margin: 0;
+}
+
+
+#carousel-management-cus .slick-dots li button {
+
+    background-color: #9F78FF;
+}
+
+
+#carousel-management-cus .slick-dots li.slick-active button {
+    background-color: #5c429e;
+}
+
+.template-category-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.template-product-text {
+    font-size: 18px;
+}
+
+.collapse-all-btn {
+    border: 1px solid #f3f5fac4;
+    background-color: #ffffff;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.collapse-all-btn:hover {
+    background-color: #ffffff;
+}
+
+.template-product-text:hover {
+    color: #9F78FF;
+}
+
+.task-card:hover {
+    background-color: #030405c4;
+    z-index: 1;
+}
+
+.menu-icon {
+    background-color: unset !important;
+    margin-left: 20px;
+}
+
+.ant-menu-submenu-title {
+    width: 40px;
+    height: 40px;
+    border-radius: 50;
+    overflow: hidden;
+}
+
+.ant-menu-horizontal .ant-menu-submenu {
+    padding-inline: unset !important;
+    border: none !important;
+}
+
+.custom-table-orders .ant-table-column-sorter-up.active {
+    background-color: #f0f0f0;
+    color: #9F78FF;
+}
+
+.custom-table-orders .ant-table-column-sorter-down.active {
+    background-color: #f0f0f0;
+    color: #9F78FF;
+}
+
+.custom-table-orders .ant-dropdown-trigger.ant-table-filter-trigger.active {
+    background-color: #fafafa;
+    color: #9F78FF;
+}
