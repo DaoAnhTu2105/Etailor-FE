@@ -26,7 +26,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import ManagerHeader from "../../../components/ManagerHeader";
 
 const ManagementStaffContent = () => {
-  const getStaffUrl = "https://e-tailorapi.azurewebsites.net/api/staff";
+  const getStaffUrl = "https://localhost:7259/api/staff";
   const [staffs, setStaffs] = useState([]);
   const [loading, setLoading] = useState(false);
   const manager = JSON.parse(localStorage.getItem("manager"));
@@ -165,7 +165,7 @@ const ManagementStaffContent = () => {
     formData.append("Phone", values.phone);
     formData.append("Username", values.username);
     values?.masterySkill?.map((item) => formData.append("MasterySkill", item));
-    const urlCreateMaterialType = `https://e-tailorapi.azurewebsites.net/api/staff`;
+    const urlCreateMaterialType = `https://localhost:7259/api/staff`;
     try {
       const response = await fetch(urlCreateMaterialType, {
         method: "POST",
@@ -218,7 +218,7 @@ const ManagementStaffContent = () => {
       values?.masterySkill?.map((item) =>
         formData.append("MasterySkill", item)
       );
-      const url = `https://e-tailorapi.azurewebsites.net/api/staff?id=${saveIdStaff}`;
+      const url = `https://localhost:7259/api/staff?id=${saveIdStaff}`;
       try {
         const response = await fetch(url, {
           method: "PUT",
@@ -254,7 +254,7 @@ const ManagementStaffContent = () => {
   };
   //---------------------------------------------------------------------------Delete-------------------------------------------------------
   const onDelete = (id) => {
-    const urlCreateBodySize = `https://e-tailorapi.azurewebsites.net/api/staff/${id}`;
+    const urlCreateBodySize = `https://localhost:7259/api/staff/${id}`;
     Swal.fire({
       title: "Bạn có muốn xóa nhân viên này?",
       showCancelButton: true,
@@ -402,7 +402,7 @@ const CollectionCreateForm = ({ open, onCreate, onCancel }) => {
     setMasteryLoading(true);
     try {
       const response = await fetch(
-        "https://e-tailorapi.azurewebsites.net/api/category-management",
+        "https://localhost:7259/api/category-management",
         {
           method: "GET",
           headers: {
@@ -687,7 +687,7 @@ const CollectionUpdateForm = ({
     setMasteryLoading(true);
     try {
       const response = await fetch(
-        "https://e-tailorapi.azurewebsites.net/api/category-management",
+        "https://localhost:7259/api/category-management",
         {
           method: "GET",
           headers: {
@@ -710,7 +710,7 @@ const CollectionUpdateForm = ({
     setUpdateLoading(true);
     try {
       const response = await fetch(
-        `https://e-tailorapi.azurewebsites.net/api/staff/info?id=${saveIdStaff}`,
+        `https://localhost:7259/api/staff/info?id=${saveIdStaff}`,
         {
           method: "GET",
           headers: {

@@ -69,7 +69,7 @@ function OrderUpdate({
   const getDetailProfileCustomer = async (id) => {
     if (id) {
       setGetDetailDataProfileCustomerLoading(true);
-      const urlProfile = `https://e-tailorapi.azurewebsites.net/api/profile-body/${id}`;
+      const urlProfile = `https://localhost:7259/api/profile-body/${id}`;
       try {
         const response = await fetch(`${urlProfile}`, {
           method: "GET",
@@ -160,7 +160,7 @@ function OrderUpdate({
 
   useEffect(() => {
     const handleGetDetail = async () => {
-      const urlProductDetail = `https://e-tailorapi.azurewebsites.net/api/product/order/${saveOrderId}/${saveIdProduct}`;
+      const urlProductDetail = `https://localhost:7259/api/product/order/${saveOrderId}/${saveIdProduct}`;
       setLoadingUpdate(true);
       try {
         const response = await fetch(`${urlProductDetail}`, {
@@ -256,8 +256,8 @@ function OrderUpdate({
       };
 
       setLoadingUpdateProfile(true);
-      // const url = `https://e-tailorapi.azurewebsites.net/api/profile-body/customer/${getDetailDataProfileCustomer.id}`;
-      const url = `https://e-tailorapi.azurewebsites.net/api/profile-body/customer/${getDetailDataProfileCustomer.id}`;
+      // const url = `https://localhost:7259/api/profile-body/customer/${getDetailDataProfileCustomer.id}`;
+      const url = `https://localhost:7259/api/profile-body/customer/${getDetailDataProfileCustomer.id}`;
       try {
         const response = await fetch(`${url}`, {
           method: "PUT",
@@ -310,7 +310,7 @@ function OrderUpdate({
           .filter(Boolean),
       };
       setLoadingUpdateProfile(true);
-      const url = `https://e-tailorapi.azurewebsites.net/api/profile-body`;
+      const url = `https://localhost:7259/api/profile-body`;
       try {
         const response = await fetch(`${url}`, {
           method: "POST",

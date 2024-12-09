@@ -46,7 +46,7 @@ function DetailProduct({
     setLoading(true);
     try {
       const response = await fetch(
-        `https://e-tailorapi.azurewebsites.net/api/product/order/${saveOrderId}/${saveIdDetailProduct}`,
+        `https://localhost:7259/api/product/order/${saveOrderId}/${saveIdDetailProduct}`,
         {
           method: "GET",
           headers: {
@@ -69,7 +69,7 @@ function DetailProduct({
     }
   };
   const handleGetDetailProfileBody = async () => {
-    const detailUrl = `https://e-tailorapi.azurewebsites.net/api/product/${saveIdDetailProduct}/order/${saveOrderId}/bodySize`;
+    const detailUrl = `https://localhost:7259/api/product/${saveIdDetailProduct}/order/${saveOrderId}/bodySize`;
     try {
       const response = await fetch(`${detailUrl}`, {
         method: "GET",
@@ -87,7 +87,7 @@ function DetailProduct({
     }
   };
   const handleGetDetailMaterial = async (id) => {
-    const detailUrl = `https://e-tailorapi.azurewebsites.net/api/material/${id}`;
+    const detailUrl = `https://localhost:7259/api/material/${id}`;
     try {
       const response = await fetch(`${detailUrl}`, {
         method: "GET",

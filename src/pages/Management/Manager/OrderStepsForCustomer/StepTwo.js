@@ -106,7 +106,7 @@ function StepTwo({
         };
       });
       setMaterialLoading(true);
-      const url = `https://e-tailorapi.azurewebsites.net/order/${saveOrderId}`;
+      const url = `https://localhost:7259/order/${saveOrderId}`;
       try {
         const response = await fetch(`${url}`, {
           method: "PUT",
@@ -142,7 +142,7 @@ function StepTwo({
   };
   const handleChangePrice = async (value, productId) => {
     if (saveOrderId && productId && value) {
-      const url = `https://e-tailorapi.azurewebsites.net/api/product/${saveOrderId}/${productId}/price?price=${value}`;
+      const url = `https://localhost:7259/api/product/${saveOrderId}/${productId}/price?price=${value}`;
       try {
         const response = await fetch(`${url}`, {
           method: "PUT",
@@ -179,8 +179,8 @@ function StepTwo({
   const handleCreatePayCash = async (amount, payType, platform) => {
     setPaymentLoading(true);
 
-    const urlCreateNew = `https://e-tailorapi.azurewebsites.net/api/payment/${saveOrderId}?amount=${amount}&payType=${payType}&platform=${platform}`;
-    const urlDeposit = `https://e-tailorapi.azurewebsites.net/api/payment/${saveOrderId}?payType=${payType}&platform=${platform}`;
+    const urlCreateNew = `https://localhost:7259/api/payment/${saveOrderId}?amount=${amount}&payType=${payType}&platform=${platform}`;
+    const urlDeposit = `https://localhost:7259/api/payment/${saveOrderId}?payType=${payType}&platform=${platform}`;
     try {
       const response = await fetch(
         `${amount === 0 ? urlDeposit : urlCreateNew}`,

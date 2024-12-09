@@ -16,7 +16,6 @@ export default function ProductDetail() {
   const [selectedImg, setSelectedImg] = useState("");
   const { id } = useParams();
 
-
   function formatCurrency(amount) {
     if (amount) {
       const strAmount = amount.toString();
@@ -32,13 +31,11 @@ export default function ProductDetail() {
     return null;
   }
 
-
-
   useEffect(() => {
     const fetchDetailProduct = async () => {
       try {
         const response = await fetch(
-          `https://e-tailorapi.azurewebsites.net/api/template-management/get-template/${id}`,
+          `https://localhost:7259/api/template-management/get-template/${id}`,
           {
             method: "GET",
             headers: {
@@ -149,39 +146,40 @@ export default function ProductDetail() {
                     className="mySwiper1"
                     slidesPerView={6}
                   >
-                    {imgData && imgData.map((img, index) => (
-                      <Space wrap key={index}>
-                        <Popover title={img.name} trigger="hover">
-                          <SwiperSlide>
-                            <figure
-                              className="image is-64x64"
-                              style={{
-                                marginBottom: "10px",
-                                objectFit: "contain",
-                                marginLeft: 10,
-                                maxHeight: 64,
-                                maxWidth: 64,
-                                overflow: "hidden",
-                                borderRadius: 10,
-                              }}
-                              onMouseEnter={() => {
-                                handleSelectedImg(img);
-                              }}
-                            >
-                              <img
-                                src={img}
+                    {imgData &&
+                      imgData.map((img, index) => (
+                        <Space wrap key={index}>
+                          <Popover title={img.name} trigger="hover">
+                            <SwiperSlide>
+                              <figure
+                                className="image is-64x64"
                                 style={{
-                                  boxShadow: "0 0 20px 0 rgba(0, 0, 0, 0.25)",
-                                  width: "64px",
-                                  height: "64px",
+                                  marginBottom: "10px",
+                                  objectFit: "contain",
+                                  marginLeft: 10,
+                                  maxHeight: 64,
+                                  maxWidth: 64,
+                                  overflow: "hidden",
+                                  borderRadius: 10,
                                 }}
-                                alt=""
-                              />
-                            </figure>
-                          </SwiperSlide>
-                        </Popover>
-                      </Space>
-                    ))}
+                                onMouseEnter={() => {
+                                  handleSelectedImg(img);
+                                }}
+                              >
+                                <img
+                                  src={img}
+                                  style={{
+                                    boxShadow: "0 0 20px 0 rgba(0, 0, 0, 0.25)",
+                                    width: "64px",
+                                    height: "64px",
+                                  }}
+                                  alt=""
+                                />
+                              </figure>
+                            </SwiperSlide>
+                          </Popover>
+                        </Space>
+                      ))}
                   </Swiper>
                 ) : (
                   imgData.map((img, index) => (
@@ -231,7 +229,7 @@ export default function ProductDetail() {
                   className="subtitle is-4"
                   style={{ margin: 0, paddingBottom: "5px" }}
                 >
-                  Giá tham khảo:  {formatCurrency(productData?.price)}
+                  Giá tham khảo: {formatCurrency(productData?.price)}
                 </p>
                 <div>
                   {componentData &&
@@ -249,7 +247,6 @@ export default function ProductDetail() {
                               component?.components.map((img, index) => {
                                 return (
                                   <>
-
                                     <div className="product-component-style-items">
                                       <Popover
                                         content={
@@ -266,23 +263,26 @@ export default function ProductDetail() {
                                             overflow: "hidden",
                                             borderRadius: "10px",
                                             cursor: "pointer",
-                                            objectFit: "fill"
+                                            objectFit: "fill",
                                           }}
                                         >
                                           <Image
-                                            style={{ objectFit: "fill", zIndex: 1000000 }}
-                                            src={img?.image ? img.image : "error"}
+                                            style={{
+                                              objectFit: "fill",
+                                              zIndex: 1000000,
+                                            }}
+                                            src={
+                                              img?.image ? img.image : "error"
+                                            }
                                             fallback="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMIAAADDCAYAAADQvc6UAAABRWlDQ1BJQ0MgUHJvZmlsZQAAKJFjYGASSSwoyGFhYGDIzSspCnJ3UoiIjFJgf8LAwSDCIMogwMCcmFxc4BgQ4ANUwgCjUcG3awyMIPqyLsis7PPOq3QdDFcvjV3jOD1boQVTPQrgSkktTgbSf4A4LbmgqISBgTEFyFYuLykAsTuAbJEioKOA7DkgdjqEvQHEToKwj4DVhAQ5A9k3gGyB5IxEoBmML4BsnSQk8XQkNtReEOBxcfXxUQg1Mjc0dyHgXNJBSWpFCYh2zi+oLMpMzyhRcASGUqqCZ16yno6CkYGRAQMDKMwhqj/fAIcloxgHQqxAjIHBEugw5sUIsSQpBobtQPdLciLEVJYzMPBHMDBsayhILEqEO4DxG0txmrERhM29nYGBddr//5/DGRjYNRkY/l7////39v///y4Dmn+LgeHANwDrkl1AuO+pmgAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAwqADAAQAAAABAAAAwwAAAAD9b/HnAAAHlklEQVR4Ae3dP3PTWBSGcbGzM6GCKqlIBRV0dHRJFarQ0eUT8LH4BnRU0NHR0UEFVdIlFRV7TzRksomPY8uykTk/zewQfKw/9znv4yvJynLv4uLiV2dBoDiBf4qP3/ARuCRABEFAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghgg0Aj8i0JO4OzsrPv69Wv+hi2qPHr0qNvf39+iI97soRIh4f3z58/u7du3SXX7Xt7Z2enevHmzfQe+oSN2apSAPj09TSrb+XKI/f379+08+A0cNRE2ANkupk+ACNPvkSPcAAEibACyXUyfABGm3yNHuAECRNgAZLuYPgEirKlHu7u7XdyytGwHAd8jjNyng4OD7vnz51dbPT8/7z58+NB9+/bt6jU/TI+AGWHEnrx48eJ/EsSmHzx40L18+fLyzxF3ZVMjEyDCiEDjMYZZS5wiPXnyZFbJaxMhQIQRGzHvWR7XCyOCXsOmiDAi1HmPMMQjDpbpEiDCiL358eNHurW/5SnWdIBbXiDCiA38/Pnzrce2YyZ4//59F3ePLNMl4PbpiL2J0L979+7yDtHDhw8vtzzvdGnEXdvUigSIsCLAWavHp/+qM0BcXMd/q25n1vF57TYBp0a3mUzilePj4+7k5KSLb6gt6ydAhPUzXnoPR0dHl79WGTNCfBnn1uvSCJdegQhLI1vvCk+fPu2ePXt2tZOYEV6/fn31dz+shwAR1sP1cqvLntbEN9MxA9xcYjsxS1jWR4AIa2Ibzx0tc44fYX/16lV6NDFLXH+YL32jwiACRBiEbf5KcXoTIsQSpzXx4N28Ja4BQoK7rgXiydbHjx/P25TaQAJEGAguWy0+2Q8PD6/Ki4R8EVl+bzBOnZY95fq9rj9zAkTI2SxdidBHqG9+skdw43borCXO/ZcJdraPWdv22uIEiLA4q7nvvCug8WTqzQveOH26fodo7g6uFe/a17W3+nFBAkRYENRdb1vkkz1CH9cPsVy/jrhr27PqMYvENYNlHAIesRiBYwRy0V+8iXP8+/fvX11Mr7L7ECueb/r48eMqm7FuI2BGWDEG8cm+7G3NEOfmdcTQw4h9/55lhm7DekRYKQPZF2ArbXTAyu4kDYB2YxUzwg0gi/41ztHnfQG26HbGel/crVrm7tNY+/1btkOEAZ2M05r4FB7r9GbAIdxaZYrHdOsgJ/wCEQY0J74TmOKnbxxT9n3FgGGWWsVdowHtjt9Nnvf7yQM2aZU/TIAIAxrw6dOnAWtZZcoEnBpNuTuObWMEiLAx1HY0ZQJEmHJ3HNvGCBBhY6jtaMoEiJB0Z29vL6ls58vxPcO8/zfrdo5qvKO+d3Fx8Wu8zf1dW4p/cPzLly/dtv9Ts/EbcvGAHhHyfBIhZ6NSiIBTo0LNNtScABFyNiqFCBChULMNNSdAhJyNSiECRCjUbEPNCRAhZ6NSiAARCjXbUHMCRMjZqBQiQIRCzTbUnAARcjYqhQgQoVCzDTUnQIScjUohAkQo1GxDzQkQIWejUogAEQo121BzAkTI2agUIkCEQs021JwAEXI2KoUIEKFQsw01J0CEnI1KIQJEKNRsQ80JECFno1KIABEKNdtQcwJEyNmoFCJAhELNNtScABFyNiqFCBChULMNNSdAhJyNSiECRCjUbEPNCRAhZ6NSiAARCjXbUHMCRMjZqBQiQIRCzTbUnAARcjYqhQgQoVCzDTUnQIScjUohAkQo1GxDzQkQIWejUogAEQo121BzAkTI2agUIkCEQs021JwAEXI2KoUIEKFQsw01J0CEnI1KIQJEKNRsQ80JECFno1KIABEKNdtQcwJEyNmoFCJAhELNNtScABFyNiqFCBChULMNNSdAhJyNSiECRCjUbEPNCRAhZ6NSiAARCjXbUHMCRMjZqBQiQIRCzTbUnAARcjYqhQgQoVCzDTUnQIScjUohAkQo1GxDzQkQIWejUogAEQo121BzAkTI2agUIkCEQs021JwAEXI2KoUIEKFQsw01J0CEnI1KIQJEKNRsQ80JECFno1KIABEKNdtQcwJEyNmoFCJAhELNNtScABFyNiqFCBChULMNNSdAhJyNSiEC/wGgKKC4YMA4TAAAAABJRU5ErkJggg=="
                                           />
                                         </figure>
                                       </Popover>
-                                    </div >
-
+                                    </div>
                                   </>
                                 );
                               })}
-
-                          </div >
+                          </div>
                         </>
                       );
                     })}
@@ -291,11 +291,7 @@ export default function ProductDetail() {
                   <button className="btn-contact ">Liên hệ đặt may</button>
                 </div>
               </div>
-
             </div>
-
-
-
           </div>
           <div style={{ padding: "50px 100px 20px 100px" }}>
             <Divider plain>Mô tả</Divider>

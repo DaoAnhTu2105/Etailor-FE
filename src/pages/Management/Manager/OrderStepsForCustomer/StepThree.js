@@ -117,7 +117,7 @@ function StepThree({
     getDetailDataProfileCustomerLoading,
     setGetDetailDataProfileCustomerLoading,
   ] = useState(false);
-  const urlGetAllMaterial = `https://e-tailorapi.azurewebsites.net/api/material/order/${saveOrderId}/fabric`;
+  const urlGetAllMaterial = `https://localhost:7259/api/material/order/${saveOrderId}/fabric`;
   const { data: materialId } = useQuery("get-material", () =>
     fetch(urlGetAllMaterial, {
       headers: {
@@ -129,7 +129,7 @@ function StepThree({
   const getDetailProfileCustomer = async (id) => {
     if (id) {
       setGetDetailDataProfileCustomerLoading(true);
-      const urlProfile = `https://e-tailorapi.azurewebsites.net/api/profile-body/${id}`;
+      const urlProfile = `https://localhost:7259/api/profile-body/${id}`;
       try {
         const response = await fetch(`${urlProfile}`, {
           method: "GET",
@@ -171,7 +171,7 @@ function StepThree({
           .filter(Boolean),
       };
       setLoadingUpdateBodyProfile(true);
-      const url = `https://e-tailorapi.azurewebsites.net/api/profile-body/customer/${getDetailDataProfileCustomer.id}`;
+      const url = `https://localhost:7259/api/profile-body/customer/${getDetailDataProfileCustomer.id}`;
       try {
         const response = await fetch(`${url}`, {
           method: "PUT",
@@ -288,7 +288,7 @@ function StepThree({
           .filter(Boolean),
       };
       setLoadingCreateBodyProfile(true);
-      const url = `https://e-tailorapi.azurewebsites.net/api/profile-body`;
+      const url = `https://localhost:7259/api/profile-body`;
       try {
         const response = await fetch(`${url}`, {
           method: "POST",
@@ -332,7 +332,7 @@ function StepThree({
   const handleChooseTemplate = async (id, data) => {
     setChooseProductTemplate(data);
     if (id) {
-      const url = `https://e-tailorapi.azurewebsites.net/api/template/${id}/component-types`;
+      const url = `https://localhost:7259/api/template/${id}/component-types`;
       try {
         const response = await fetch(`${url}`, {
           method: "GET",

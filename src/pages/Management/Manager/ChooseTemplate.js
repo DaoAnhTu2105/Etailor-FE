@@ -28,7 +28,7 @@ const ChooseTemplate = ({ open, onCancel, handleChooseTemplate }) => {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const handleGetCategory = async () => {
     setLoading(true);
-    const url = `https://e-tailorapi.azurewebsites.net/api/category-management`;
+    const url = `https://localhost:7259/api/category-management`;
     try {
       const response = await fetch(url, {
         method: "GET",
@@ -50,7 +50,7 @@ const ChooseTemplate = ({ open, onCancel, handleChooseTemplate }) => {
   const handleSelected = async () => {
     setSelectedLoading(true);
     if (selected) {
-      const url = `https://e-tailorapi.azurewebsites.net/api/template-management/category/${selected}`;
+      const url = `https://localhost:7259/api/template-management/category/${selected}`;
       try {
         const response = await fetch(url, {
           method: "GET",

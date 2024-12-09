@@ -17,8 +17,6 @@ import { Avatar } from "antd";
 import Swal from "sweetalert2";
 
 const Header = () => {
-
-
   const [clickedSection, setClickedSection] = useState("Trang Chu");
   const [open, setOpen] = React.useState(false);
   const customer = localStorage.getItem("customer");
@@ -31,7 +29,7 @@ const Header = () => {
   };
   const navigate = useNavigate();
   const handleLogout = async () => {
-    const LOG_OUT_API = `https://e-tailorapi.azurewebsites.net/api/auth/customer/logout`;
+    const LOG_OUT_API = `https://localhost:7259/api/auth/customer/logout`;
     try {
       const response = await fetch(LOG_OUT_API, {
         method: "POST",
@@ -147,7 +145,6 @@ const Header = () => {
         </div>
         {customer ? (
           <div className="header-end">
-
             <div style={{ height: "auto" }}>
               <Dropdown>
                 <MenuButton className="user-logo" sx={{ border: "none" }}>
@@ -155,9 +152,11 @@ const Header = () => {
                   {customer.avatar ? (
                     <Avatar size={48} src={customer.avatar} />
                   ) : (
-                    <FontAwesomeIcon style={{ fontSize: "32px" }} icon={faUser} />
+                    <FontAwesomeIcon
+                      style={{ fontSize: "32px" }}
+                      icon={faUser}
+                    />
                   )}
-
                 </MenuButton>
                 <Menu sx={{ zIndex: 100000000 }}>
                   <Link to="/profile">
@@ -170,19 +169,20 @@ const Header = () => {
             <div className="navbar-items">
               <Notification />
             </div>
-
           </div>
         ) : (
           <div className="header-end">
             <div className="navbar-items login">
-              <h1 className="subtitle is-5" id="header-login-btn" onClick={handleOpen}>
+              <h1
+                className="subtitle is-5"
+                id="header-login-btn"
+                onClick={handleOpen}
+              >
                 Đăng nhập
               </h1>
             </div>
           </div>
         )}
-
-
       </div>
       {open && <Login openModal={handleOpen} closeModal={handleClose} />}
     </nav>

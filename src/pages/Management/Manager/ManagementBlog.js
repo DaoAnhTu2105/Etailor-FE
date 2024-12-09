@@ -150,7 +150,6 @@ const BlogUpdateFormModal = ({
           });
       }}
     >
-
       <Form
         layout="vertical"
         form={form}
@@ -190,17 +189,14 @@ const BlogUpdateFormModal = ({
           style={{ width: "130px" }}
           rules={[
             {
-              required:true,
-              message:"Không được để trống ảnh"
-            }
+              required: true,
+              message: "Không được để trống ảnh",
+            },
           ]}
         >
           <Upload
             beforeUpload={(file) => {
-              console.log(
-                "file image: ",
-                file
-              );
+              console.log("file image: ", file);
               return false;
             }}
             listType="picture-card"
@@ -338,7 +334,6 @@ const BlogCreateFormModal = ({ open, onCreate, onCancel, initialValues }) => {
               form.resetFields();
               setImageUrl("");
             }
-
           })
           .catch((info) => {
             console.log("Validate Failed:", info);
@@ -382,23 +377,19 @@ const BlogCreateFormModal = ({ open, onCreate, onCancel, initialValues }) => {
           rules={[
             {
               required: true,
-              message: "Vui lòng upload ảnh"
-            }
+              message: "Vui lòng upload ảnh",
+            },
           ]}
           style={{ width: "130px" }}
         >
           <Upload
             beforeUpload={(file) => {
-              console.log(
-                "file image: ",
-                file
-              );
+              console.log("file image: ", file);
 
               return false;
             }}
             listType="picture-card"
             maxCount={1}
-
           >
             {imageUrl ? (
               <img
@@ -475,7 +466,6 @@ const BlogCreateFormModal = ({ open, onCreate, onCancel, initialValues }) => {
   );
 };
 
-
 const ManagementBlogContent = () => {
   const manager = JSON.parse(localStorage.getItem("manager"));
   useEffect(() => {
@@ -483,13 +473,12 @@ const ManagementBlogContent = () => {
       manager = JSON.parse(localStorage.getItem("manager"));
     }
   }, []);
-  const getUrl = "https://e-tailorapi.azurewebsites.net/api/blog";
+  const getUrl = "https://localhost:7259/api/blog";
   const [formValues, setFormValues] = useState();
   const [open, setOpen] = useState(false);
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
   const navigate = useNavigate();
   const onCreate = async (values) => {
-
     console.log("VALUE:", values);
     setFormValues(values);
     const formData = new FormData();
@@ -501,7 +490,7 @@ const ManagementBlogContent = () => {
       console.log("formData", p[0] + " - " + p[1]);
     }
     try {
-      const CREATE_BLOG_URL = `https://e-tailorapi.azurewebsites.net/api/blog`;
+      const CREATE_BLOG_URL = `https://localhost:7259/api/blog`;
       const response = await fetch(CREATE_BLOG_URL, {
         method: "POST",
         headers: {
@@ -510,9 +499,8 @@ const ManagementBlogContent = () => {
 
         body: formData,
       });
-      const text = await response.text()
+      const text = await response.text();
       if (response.ok) {
-
         setOpen(false);
         await Swal.fire({
           icon: "success",
@@ -546,7 +534,7 @@ const ManagementBlogContent = () => {
     formData.append("Id", id);
     console.log("VALUES UPDATE:", values);
     try {
-      const UPDATE_BLOG_URL = `https://e-tailorapi.azurewebsites.net/api/blog/${id}`;
+      const UPDATE_BLOG_URL = `https://localhost:7259/api/blog/${id}`;
       const response = await fetch(UPDATE_BLOG_URL, {
         method: "PUT",
         headers: {
@@ -555,7 +543,7 @@ const ManagementBlogContent = () => {
 
         body: formData,
       });
-      const text = await response.text()
+      const text = await response.text();
       if (response.ok) {
         setOpenUpdateModal(false);
         await Swal.fire({
@@ -672,7 +660,7 @@ const ManagementBlogContent = () => {
       cancelButtonText: `Huỷ`,
     }).then(async (result) => {
       if (result.isDenied) {
-        const DELETE_URL = `https://e-tailorapi.azurewebsites.net/api/blog/${id}`;
+        const DELETE_URL = `https://localhost:7259/api/blog/${id}`;
         try {
           const response = await fetch(DELETE_URL, {
             method: "DELETE",
@@ -707,7 +695,7 @@ const ManagementBlogContent = () => {
   const handleEdit = (record) => {
     console.log("Edit clicked for:", record);
     if (record) {
-      const GET_DETAIL_BLOG_URL = `https://e-tailorapi.azurewebsites.net/api/blog/${record.id}`;
+      const GET_DETAIL_BLOG_URL = `https://localhost:7259/api/blog/${record.id}`;
       fetch(GET_DETAIL_BLOG_URL, {
         headers: {
           "Content-Type": "application/json",
@@ -807,7 +795,6 @@ const ManagementBlogContent = () => {
 };
 
 function ManagementBlog() {
-
   return (
     <div>
       <div

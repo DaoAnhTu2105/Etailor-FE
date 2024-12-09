@@ -61,8 +61,7 @@ const ManagementCategoryContent = () => {
   const [loading, setLoading] = useState(false);
 
   const handleGetDataCategory = async () => {
-    const getUrl =
-      "https://e-tailorapi.azurewebsites.net/api/category-management";
+    const getUrl = "https://localhost:7259/api/category-management";
     try {
       setLoading(true);
       const response = await fetch(getUrl, {
@@ -193,7 +192,7 @@ const ManagementCategoryContent = () => {
   //------------------------------------------------------------Modal create-------------------------------------------------------
   const [open, setOpen] = useState(false);
   const onCreate = async (values) => {
-    const urlCreateMaterialType = `https://e-tailorapi.azurewebsites.net/api/category-management`;
+    const urlCreateMaterialType = `https://localhost:7259/api/category-management`;
     try {
       const response = await fetch(urlCreateMaterialType, {
         method: "POST",
@@ -238,7 +237,7 @@ const ManagementCategoryContent = () => {
     setOpenUpdate(true);
   };
   const onUpdate = async (values) => {
-    const url = `https://e-tailorapi.azurewebsites.net/api/category-management/${saveId}`;
+    const url = `https://localhost:7259/api/category-management/${saveId}`;
     try {
       const response = await fetch(url, {
         method: "PUT",
@@ -286,7 +285,7 @@ const ManagementCategoryContent = () => {
     }).then(async (result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        const url = `https://e-tailorapi.azurewebsites.net/api/category-management/${id}`;
+        const url = `https://localhost:7259/api/category-management/${id}`;
         try {
           const response = await fetch(url, {
             method: "DELETE",
@@ -335,7 +334,7 @@ const ManagementCategoryContent = () => {
   // };
   // const onUpdateComponents = async (id, value) => {
   //   console.log("id, value", id, value);
-  //   const url = `https://e-tailorapi.azurewebsites.net/api/component-type-management/${id}`;
+  //   const url = `https://localhost:7259/api/component-type-management/${id}`;
   //   try {
   //     const response = await fetch(url, {
   //       method: "PUT",
@@ -594,7 +593,7 @@ const CollectionUpdateForm = ({
   useEffect(() => {
     const handleDataDetail = async () => {
       setLoading(true);
-      const urlDetail = `https://e-tailorapi.azurewebsites.net/api/category-management/${saveId}`;
+      const urlDetail = `https://localhost:7259/api/category-management/${saveId}`;
       try {
         const response = await fetch(urlDetail, {
           method: "GET",

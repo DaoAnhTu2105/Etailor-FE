@@ -28,15 +28,12 @@ export default function Blog() {
     const fetchBlogs = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          "https://e-tailorapi.azurewebsites.net/api/blog",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await fetch("https://localhost:7259/api/blog", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         if (response.ok) {
           const data = await response.json();
           console.log("blogs:", data);
@@ -56,7 +53,7 @@ export default function Blog() {
     const day = date.getDate();
     const month = date.toLocaleString("vi-VI", { month: "long" });
     const year = date.getFullYear();
-    return `${day} ${month} ${year}`
+    return `${day} ${month} ${year}`;
   };
 
   return (
@@ -139,7 +136,7 @@ export default function Blog() {
               Bài viết gần đây
             </p>
             <div className="blog-container">
-              {blogsData.length > 0 ?
+              {blogsData.length > 0 ? (
                 blogsData.map((blog, index) => {
                   return (
                     <div className="blog-items" key={index}>
@@ -148,7 +145,9 @@ export default function Blog() {
                           <img src={blog.thumbnail} alt={`Blog ${index + 1}`} />
                         </div>
                         <div className="blog-items-des">
-                          <p className="title is-4" style={{width:340}}>{blog.title}</p>
+                          <p className="title is-4" style={{ width: 340 }}>
+                            {blog.title}
+                          </p>
                           <p className="blog-description">
                             Ngày đăng: {formatDate(blog.createdTime)}
                           </p>
@@ -156,11 +155,12 @@ export default function Blog() {
                       </Link>
                     </div>
                   );
-                }) : (
-                  <div style={{ alignItems: "center", paddingBottom: "100px" }}>
-                    <h1>Chưa có bài viết nào</h1>
-                  </div>
-                )}
+                })
+              ) : (
+                <div style={{ alignItems: "center", paddingBottom: "100px" }}>
+                  <h1>Chưa có bài viết nào</h1>
+                </div>
+              )}
             </div>
           </div>
         </div>

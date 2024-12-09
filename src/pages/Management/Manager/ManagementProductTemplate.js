@@ -208,7 +208,7 @@ export const ManagementCreateProductTemplate = () => {
     } else if (current === 2) {
       if (saveBodySize[0].length >= 1) {
         setLoadingStep3(true);
-        const getUrl = `https://e-tailorapi.azurewebsites.net/api/template-body-size/template/${saveProductTemplateId}`;
+        const getUrl = `https://localhost:7259/api/template-body-size/template/${saveProductTemplateId}`;
         try {
           const response = await fetch(getUrl, {
             method: "POST",
@@ -270,8 +270,7 @@ export const ManagementCreateProductTemplate = () => {
   //-------------------------------------------------------------step 1----------------------------------------------
   const [getCategory, setCategory] = useState([]);
   const [loadingStep1, setLoadingStep1] = useState(false);
-  const getUrl =
-    "https://e-tailorapi.azurewebsites.net/api/category-management";
+  const getUrl = "https://localhost:7259/api/category-management";
 
   const handleGetCategory = async () => {
     try {
@@ -295,7 +294,7 @@ export const ManagementCreateProductTemplate = () => {
   const [categoryDetailData, setCategoryDetailData] = useState({});
 
   const handleGetDetailCategory = async () => {
-    const getDetailUrl = `https://e-tailorapi.azurewebsites.net/api/category-management/${saveCategoryId}`;
+    const getDetailUrl = `https://localhost:7259/api/category-management/${saveCategoryId}`;
     try {
       const response = await fetch(getDetailUrl, {
         method: "GET",
@@ -348,7 +347,7 @@ export const ManagementCreateProductTemplate = () => {
       console.log(pair[0] + ", " + pair[1]);
     }
     setLoadingStep1(true);
-    const urlCreateMaterialType = `https://e-tailorapi.azurewebsites.net/api/template-management/create-template`;
+    const urlCreateMaterialType = `https://localhost:7259/api/template-management/create-template`;
     try {
       const response = await fetch(urlCreateMaterialType, {
         method: "POST",
@@ -407,7 +406,7 @@ export const ManagementCreateProductTemplate = () => {
     formData.append("ImageFile", values.image);
     formData.append("Default", values.default);
 
-    const urlCreateMaterialType = `https://e-tailorapi.azurewebsites.net/api/Component/template/${saveProductTemplateId}/${values.componentTypeId}`;
+    const urlCreateMaterialType = `https://localhost:7259/api/Component/template/${saveProductTemplateId}/${values.componentTypeId}`;
     try {
       const response = await fetch(urlCreateMaterialType, {
         method: "POST",
@@ -432,7 +431,7 @@ export const ManagementCreateProductTemplate = () => {
   };
 
   const handleGetComponentType = async () => {
-    const getDetailUrl = `https://e-tailorapi.azurewebsites.net/api/template/${saveProductTemplateId}/component-types`;
+    const getDetailUrl = `https://localhost:7259/api/template/${saveProductTemplateId}/component-types`;
     try {
       const response = await fetch(getDetailUrl, {
         method: "GET",
@@ -468,7 +467,7 @@ export const ManagementCreateProductTemplate = () => {
       denyButtonText: `Không xóa`,
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const getDetailUrl = `https://e-tailorapi.azurewebsites.net/api/Component/template/${templateId}/${componentTypeId}/${componentId}`;
+        const getDetailUrl = `https://localhost:7259/api/Component/template/${templateId}/${componentTypeId}/${componentId}`;
         try {
           const response = await fetch(getDetailUrl, {
             method: "DELETE",
@@ -515,7 +514,7 @@ export const ManagementCreateProductTemplate = () => {
   const [dataBodySize, setDataBodySize] = useState([]);
 
   const handleDataBodySize = async () => {
-    const getDetailUrl = `https://e-tailorapi.azurewebsites.net/api/body-size`;
+    const getDetailUrl = `https://localhost:7259/api/body-size`;
     try {
       const response = await fetch(getDetailUrl, {
         method: "GET",
@@ -552,7 +551,7 @@ export const ManagementCreateProductTemplate = () => {
   const navigate = useNavigate();
 
   const handleGetComponentTypesCategory = async () => {
-    const getlUrl = `https://e-tailorapi.azurewebsites.net/api/category/${saveCategoryId}/component-types`;
+    const getlUrl = `https://localhost:7259/api/category/${saveCategoryId}/component-types`;
     try {
       const response = await fetch(getlUrl, {
         method: "GET",
@@ -579,7 +578,7 @@ export const ManagementCreateProductTemplate = () => {
         : null,
     }));
     setLoadingStep4(true);
-    const postlUrl = `https://e-tailorapi.azurewebsites.net/api/template-stage/template/${saveProductTemplateId}`;
+    const postlUrl = `https://localhost:7259/api/template-stage/template/${saveProductTemplateId}`;
     try {
       const response = await fetch(postlUrl, {
         method: "POST",
@@ -625,7 +624,7 @@ export const ManagementCreateProductTemplate = () => {
   const [exportFileLoading, setExportFileLoading] = useState(false);
   const handleDownloadExportFile = async () => {
     if (saveProductTemplateId) {
-      const getlUrl = `https://e-tailorapi.azurewebsites.net/api/Component/export/template/${saveProductTemplateId}`;
+      const getlUrl = `https://localhost:7259/api/Component/export/template/${saveProductTemplateId}`;
       setExportFileLoading(true);
       const response = await fetch(getlUrl, {
         method: "GET",
@@ -682,7 +681,7 @@ export const ManagementCreateProductTemplate = () => {
       formData.append("file", file);
 
       const response = await fetch(
-        `https://e-tailorapi.azurewebsites.net/api/Component/import/template/${saveProductTemplateId}`,
+        `https://localhost:7259/api/Component/import/template/${saveProductTemplateId}`,
         {
           method: "POST",
           headers: {
@@ -1684,7 +1683,7 @@ const ManagementProductTemplateContent = () => {
   const handleGetProductTemplate = async (searchText = null) => {
     setLoading(true);
     try {
-      const getUrl = `https://e-tailorapi.azurewebsites.net/api/template-management/templates${
+      const getUrl = `https://localhost:7259/api/template-management/templates${
         searchText ? `?search=${searchText}` : ""
       }`;
 
@@ -1713,7 +1712,7 @@ const ManagementProductTemplateContent = () => {
     }).then(async (result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        const deleteUrl = `https://e-tailorapi.azurewebsites.net/api/template-management/delete-template/${id}`;
+        const deleteUrl = `https://localhost:7259/api/template-management/delete-template/${id}`;
         try {
           const response = await fetch(deleteUrl, {
             method: "DELETE",

@@ -2,7 +2,28 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import {
-  Typography, Button, Flex, Divider, Carousel, Input, Table, Checkbox, Modal, Breadcrumb, theme, Form, Space, Select, Radio, Upload, Steps, Row, Col, Card, Avatar, message
+  Typography,
+  Button,
+  Flex,
+  Divider,
+  Carousel,
+  Input,
+  Table,
+  Checkbox,
+  Modal,
+  Breadcrumb,
+  theme,
+  Form,
+  Space,
+  Select,
+  Radio,
+  Upload,
+  Steps,
+  Row,
+  Col,
+  Card,
+  Avatar,
+  message,
 } from "antd";
 import { useQuery, useQueryClient, queryClient } from "react-query";
 import Loading from "../LoadingComponent/loading";
@@ -21,7 +42,12 @@ const formatDate = (date) => {
   return formattedDate;
 };
 
-const UpdateBodyProfileModal = ({ open, onCreate, onCancel, initialValues }) => {
+const UpdateBodyProfileModal = ({
+  open,
+  onCreate,
+  onCancel,
+  initialValues,
+}) => {
   const [formInstance, setFormInstance] = useState();
   const [form] = Form.useForm();
 
@@ -42,18 +68,23 @@ const UpdateBodyProfileModal = ({ open, onCreate, onCancel, initialValues }) => 
           formInstance?.resetFields();
           onCreate(values);
         } catch (error) {
-          console.log('Failed:', error);
+          console.log("Failed:", error);
         }
       }}
     >
-      <Form layout="vertical" form={form} name="form_in_modal" initialValues={initialValues}>
+      <Form
+        layout="vertical"
+        form={form}
+        name="form_in_modal"
+        initialValues={initialValues}
+      >
         <Form.Item
           name="title"
           label="Title"
           rules={[
             {
               required: true,
-              message: 'Please input the title of collection!',
+              message: "Please input the title of collection!",
             },
           ]}
         >
@@ -62,7 +93,10 @@ const UpdateBodyProfileModal = ({ open, onCreate, onCancel, initialValues }) => 
         <Form.Item name="description" label="Description">
           <Input type="textarea" />
         </Form.Item>
-        <Form.Item name="modifier" className="collection-create-form_last-form-item">
+        <Form.Item
+          name="modifier"
+          className="collection-create-form_last-form-item"
+        >
           <Radio.Group>
             <Radio value="public">Public</Radio>
             <Radio value="private">Private</Radio>
@@ -77,41 +111,40 @@ const CustomerBodyProfile = ({ loadProfile }) => {
   const customer = localStorage.getItem("customer");
   const token = JSON.parse(customer)?.token;
   const { data: getBodyProfile } = useQuery("get-all-bodyProfile", () =>
-    fetch(`https://e-tailorapi.azurewebsites.net/api/profile-body`, {
+    fetch(`https://localhost:7259/api/profile-body`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     }).then((response) => response.json())
   );
-  const [detailProfile, setDetaiProfile] = useState('')
+  const [detailProfile, setDetaiProfile] = useState("");
 
   const handleEdit = async (id) => {
-    console.log("ID:", id)
+    console.log("ID:", id);
     if (id) {
       const GET_DETAIL_PROFILE_URL = `https://etailorapi.azurewebsites.net/api/profile-body/3379a8d0-254f-44ff-a3d8-59b462/${id}`;
       fetch(GET_DETAIL_PROFILE_URL, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
       })
         .then((response) => response.json())
         .then((data) => {
           setDetaiProfile(data);
-          console.log("DATA DETAIL:", data)
+          console.log("DATA DETAIL:", data);
           setOpenUpdateModal(true);
         })
         .catch((error) => {
           console.error("Error fetching blog detail:", error);
         });
     }
-
-  }
+  };
   const [formValues, setFormValues] = useState();
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
   const onCreate = (values) => {
-    console.log('Received values of form: ', values);
+    console.log("Received values of form: ", values);
     setFormValues(values);
     setOpen(false);
   };
@@ -125,7 +158,7 @@ const CustomerBodyProfile = ({ loadProfile }) => {
       cancelButtonText: "Huỷ",
     }).then(async (result) => {
       if (result.isDenied) {
-        const DELETE_PROFILE_URL = `https://e-tailorapi.azurewebsites.net/api/profile-body/${id}`;
+        const DELETE_PROFILE_URL = `https://localhost:7259/api/profile-body/${id}`;
         const customer = localStorage.getItem("customer");
         const token = JSON.parse(customer)?.token;
         try {
@@ -161,7 +194,7 @@ const CustomerBodyProfile = ({ loadProfile }) => {
     setOpen(false);
   };
   const handleUpdateProfile = async (id) => {
-    const UPDATE_PROFILE_URL = `https://e-tailorapi.azurewebsites.net/api/profile-body/${id}`;
+    const UPDATE_PROFILE_URL = `https://localhost:7259/api/profile-body/${id}`;
     const customer = localStorage.getItem("customer");
     const token = JSON.parse(customer)?.token;
     try {
@@ -177,11 +210,10 @@ const CustomerBodyProfile = ({ loadProfile }) => {
         const data = await response.json();
         console.log("GET DETAIL:", data);
       }
-    } catch { }
+    } catch {}
   };
   return (
     <>
-
       <table className="table" style={{ width: "100%" }}>
         <thead>
           <tr>
@@ -243,7 +275,7 @@ const CustomerBodyProfile = ({ loadProfile }) => {
         onCreate={onCreate}
         onCancel={() => setOpenUpdateModal(false)}
         initialValues={{
-          modifier: 'public',
+          modifier: "public",
         }}
       />
     </>

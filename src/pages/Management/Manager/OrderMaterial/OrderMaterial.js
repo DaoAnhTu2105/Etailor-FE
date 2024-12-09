@@ -50,7 +50,7 @@ export const OrderMaterial = ({
   detailProductData,
 }) => {
   const manager = JSON.parse(localStorage.getItem("manager"));
-  const getMaterialUrl = `https://e-tailorapi.azurewebsites.net/api/material/order/${saveIdOrder}/fabric`;
+  const getMaterialUrl = `https://localhost:7259/api/material/order/${saveIdOrder}/fabric`;
   const [loadingMaterial, setLoadingMaterial] = useState(false);
   const [formReset, setFormReset] = useState(0);
   const [loadingCreateOrderMaterial, setLoadingCreateOrderMaterial] =
@@ -61,7 +61,7 @@ export const OrderMaterial = ({
   const onCreate = async () => {
     const values = form.getFieldsValue();
     console.log("values", values);
-    const url = `https://e-tailorapi.azurewebsites.net/api/task/${taskId}/stage/${stageId}/material`;
+    const url = `https://localhost:7259/api/task/${taskId}/stage/${stageId}/material`;
     try {
       const response = await fetch(url, {
         method: "PUT",

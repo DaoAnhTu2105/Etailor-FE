@@ -56,7 +56,7 @@ const { Option } = Select;
 
 const ManagementDiscountContent = () => {
   const manager = JSON.parse(localStorage.getItem("manager"));
-  const getUrl = "https://e-tailorapi.azurewebsites.net/api/discount";
+  const getUrl = "https://localhost:7259/api/discount";
 
   const {
     data: discount,
@@ -222,7 +222,7 @@ const ManagementDiscountContent = () => {
   const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
   const onCreate = async (values, startDate, endDate) => {
-    const urlCreateMaterialType = `https://e-tailorapi.azurewebsites.net/api/discount`;
+    const urlCreateMaterialType = `https://localhost:7259/api/discount`;
     if (startDate.isAfter(endDate)) {
       setError("Ngày bắt đầu không được lớn hơn ngày kết thúc");
       return;
@@ -262,7 +262,7 @@ const ManagementDiscountContent = () => {
     setOpenUpdate(true);
   };
   const onUpdate = async (values, startDate, endDate) => {
-    const url = `https://e-tailorapi.azurewebsites.net/api/discount/${saveDiscountId}`;
+    const url = `https://localhost:7259/api/discount/${saveDiscountId}`;
     if (startDate.isAfter(endDate)) {
       setErrorUpdate("Ngày bắt đầu không được lớn hơn ngày kết thúc");
       return;
@@ -296,7 +296,7 @@ const ManagementDiscountContent = () => {
 
   //----------------------------------------------------------------------------------------------------------------
   const onDeleteDiscount = (id) => {
-    const url = `https://e-tailorapi.azurewebsites.net/api/discount/${id}`;
+    const url = `https://localhost:7259/api/discount/${id}`;
     Swal.fire({
       title: "Bạn có muốn xóa chương trình giảm giá này?",
       showCancelButton: true,
@@ -804,7 +804,7 @@ const CollectionUpdateForm = ({
   useEffect(() => {
     const handleDataDetail = async () => {
       setLoading(true);
-      const urlDetail = `https://e-tailorapi.azurewebsites.net/api/discount/${saveDiscountId}`;
+      const urlDetail = `https://localhost:7259/api/discount/${saveDiscountId}`;
       try {
         const response = await fetch(urlDetail, {
           method: "GET",

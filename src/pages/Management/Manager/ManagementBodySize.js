@@ -43,7 +43,7 @@ const ManagementBodySizeContent = () => {
   const [bodySize, setBodySize] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const getUrl = "https://e-tailorapi.azurewebsites.net/api/body-size";
+  const getUrl = "https://localhost:7259/api/body-size";
 
   const handleBodySize = async () => {
     setLoading(true);
@@ -183,7 +183,7 @@ const ManagementBodySizeContent = () => {
   //------------------------------------------------------------Modal create-------------------------------------------------------
   const [open, setOpen] = useState(false);
   const onCreate = async (values) => {
-    const urlCreateMaterialType = `https://e-tailorapi.azurewebsites.net/api/body-size`;
+    const urlCreateMaterialType = `https://localhost:7259/api/body-size`;
     try {
       const response = await fetch(urlCreateMaterialType, {
         method: "POST",
@@ -214,7 +214,7 @@ const ManagementBodySizeContent = () => {
     setOpenUpdate(true);
   };
   const onUpdate = async (values) => {
-    const url = `https://e-tailorapi.azurewebsites.net/api/body-size/${saveBodySizeId}`;
+    const url = `https://localhost:7259/api/body-size/${saveBodySizeId}`;
     try {
       const response = await fetch(url, {
         method: "PUT",
@@ -242,7 +242,7 @@ const ManagementBodySizeContent = () => {
 
   //-------------------------------------------------------------------------Delete-------------------------------------------------------------------------
   const onDeleteBodySize = (id) => {
-    const urlCreateBodySize = `https://e-tailorapi.azurewebsites.net/api/body-size/${id}`;
+    const urlCreateBodySize = `https://localhost:7259/api/body-size/${id}`;
     Swal.fire({
       title: "Bạn có muốn xóa số đo cơ thể này?",
       showCancelButton: true,
@@ -673,7 +673,7 @@ const CollectionUpdateForm = ({
   useEffect(() => {
     const handleDataDetail = async () => {
       setLoading(true);
-      const urlDetail = `https://e-tailorapi.azurewebsites.net/api/body-size/${saveBodySizeId}`;
+      const urlDetail = `https://localhost:7259/api/body-size/${saveBodySizeId}`;
       try {
         const response = await fetch(urlDetail, {
           method: "GET",

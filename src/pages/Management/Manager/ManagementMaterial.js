@@ -44,10 +44,9 @@ const ManagementMaterialContent = () => {
   const [material, setMaterial] = useState([]);
   const [loadingMaterial, setLoadingMaterial] = useState(false);
   const [materialCategory, setMaterialCategory] = useState([]);
-  const getMaterialUrl = "https://e-tailorapi.azurewebsites.net/api/material";
+  const getMaterialUrl = "https://localhost:7259/api/material";
   const manager = JSON.parse(localStorage.getItem("manager"));
-  const getMaterialCategoryUrl =
-    "https://e-tailorapi.azurewebsites.net/api/material-category";
+  const getMaterialCategoryUrl = "https://localhost:7259/api/material-category";
 
   const handleDataMaterialCategory = async () => {
     try {
@@ -179,7 +178,7 @@ const ManagementMaterialContent = () => {
     formData.append("Name", values.name);
     formData.append("ImageFile", values.imageFile);
     formData.append("Quantity", values.quantity);
-    const urlCreateMaterialType = `https://e-tailorapi.azurewebsites.net/api/material`;
+    const urlCreateMaterialType = `https://localhost:7259/api/material`;
     try {
       const response = await fetch(urlCreateMaterialType, {
         method: "POST",
@@ -212,7 +211,7 @@ const ManagementMaterialContent = () => {
     setOpenUpdate(true);
   };
   const onUpdate = async (values) => {
-    const urlCreateMaterial = `https://e-tailorapi.azurewebsites.net/api/material/${saveMaterialId}`;
+    const urlCreateMaterial = `https://localhost:7259/api/material/${saveMaterialId}`;
     try {
       const response = await fetch(urlCreateMaterial, {
         method: "PUT",
@@ -236,7 +235,7 @@ const ManagementMaterialContent = () => {
   };
   //---------------------------------------------------------------------------------------Delete--------------------------------------------------
   const onDeleteMaterial = (id) => {
-    const urlCreateMaterial = `https://e-tailorapi.azurewebsites.net/api/material/${id}`;
+    const urlCreateMaterial = `https://localhost:7259/api/material/${id}`;
     Swal.fire({
       title: "Bạn có muốn xóa nguyên liệu này?",
       showCancelButton: true,
@@ -417,7 +416,7 @@ const UpdateMaterial = ({
   useEffect(() => {
     const handleDataDetail = async () => {
       setLoading(true);
-      const urlMaterialDetail = `https://e-tailorapi.azurewebsites.net/api/material/${saveMaterialId}`;
+      const urlMaterialDetail = `https://localhost:7259/api/material/${saveMaterialId}`;
       try {
         const response = await fetch(urlMaterialDetail, {
           method: "GET",
@@ -838,8 +837,7 @@ const CreateMaterial = ({
 function ManagementMaterialTypeContent() {
   const [materialType, setMaterialType] = useState([]);
   const [loadingMaterialType, setLoadingMaterialType] = useState(false);
-  const getMaterialTypeUrl =
-    "https://e-tailorapi.azurewebsites.net/api/material-type";
+  const getMaterialTypeUrl = "https://localhost:7259/api/material-type";
   const manager = JSON.parse(localStorage.getItem("manager"));
   const handleDataMaterialType = async () => {
     setLoadingMaterialType(true);
@@ -935,7 +933,7 @@ function ManagementMaterialTypeContent() {
   //------------------------------------------------------------Modal create-------------------------------------------------------
   const [open, setOpen] = useState(false);
   const onCreateMaterialType = async (values) => {
-    const urlCreateMaterialType = `https://e-tailorapi.azurewebsites.net/api/material-type`;
+    const urlCreateMaterialType = `https://localhost:7259/api/material-type`;
     try {
       const response = await fetch(urlCreateMaterialType, {
         method: "POST",
@@ -969,7 +967,7 @@ function ManagementMaterialTypeContent() {
     setOpenUpdateModal(true);
   };
   const onUpdateMaterialType = async (values) => {
-    const urlCreateMaterialType = `https://e-tailorapi.azurewebsites.net/api/material-type/${values}`;
+    const urlCreateMaterialType = `https://localhost:7259/api/material-type/${values}`;
     try {
       const response = await fetch(urlCreateMaterialType, {
         method: "PUT",
@@ -995,7 +993,7 @@ function ManagementMaterialTypeContent() {
 
   //------------------------------------------------------------------Delete------------------------------------------------------------------------------
   const onDeleteMaterialType = (id) => {
-    const urlCreateMaterialType = `https://e-tailorapi.azurewebsites.net/api/material-type/${id}`;
+    const urlCreateMaterialType = `https://localhost:7259/api/material-type/${id}`;
     Swal.fire({
       title: "Bạn có muốn xóa nguyên liệu này?",
       showCancelButton: true,
@@ -1213,7 +1211,7 @@ const UpdateMaterialType = ({
   useEffect(() => {
     const handleDataDetail = async () => {
       setLoading(true);
-      const urlMaterialTypeDetail = `https://e-tailorapi.azurewebsites.net/api/material-type/${saveId}`;
+      const urlMaterialTypeDetail = `https://localhost:7259/api/material-type/${saveId}`;
       try {
         const response = await fetch(urlMaterialTypeDetail, {
           method: "GET",
@@ -1342,8 +1340,7 @@ function ManagementMaterialCategoryContent() {
   const [materialCategory, setMaterialCategory] = useState([]);
   // const [materialType, setMaterialType] = useState([]);
   const [loadingMaterialCategory, setLoadingMaterialCategory] = useState(false);
-  const getMaterialCategoryUrl =
-    "https://e-tailorapi.azurewebsites.net/api/material-category";
+  const getMaterialCategoryUrl = "https://localhost:7259/api/material-category";
   const manager = JSON.parse(localStorage.getItem("manager"));
   const handleDataMaterialCategory = async () => {
     setLoadingMaterialCategory(true);
@@ -1431,7 +1428,7 @@ function ManagementMaterialCategoryContent() {
   //------------------------------------------------------------Modal create-------------------------------------------------------
   const [open, setOpen] = useState(false);
   const onCreate = async (values) => {
-    const urlCreateMaterialCategory = `https://e-tailorapi.azurewebsites.net/api/material-category`;
+    const urlCreateMaterialCategory = `https://localhost:7259/api/material-category`;
     try {
       const response = await fetch(urlCreateMaterialCategory, {
         method: "POST",
@@ -1465,7 +1462,7 @@ function ManagementMaterialCategoryContent() {
     setOpenUpdate(true);
   };
   const onUpdate = async (values) => {
-    const urlCreateMaterialCategory = `https://e-tailorapi.azurewebsites.net/api/material-category/${values.id}`;
+    const urlCreateMaterialCategory = `https://localhost:7259/api/material-category/${values.id}`;
     try {
       const response = await fetch(urlCreateMaterialCategory, {
         method: "PUT",
@@ -1492,7 +1489,7 @@ function ManagementMaterialCategoryContent() {
 
   //--------------------------------------------------------------------Delete--------------------------------------------------------
   const onDeleteMaterialCategory = (id) => {
-    const urlCreateMaterialType = `https://e-tailorapi.azurewebsites.net/api/material-category/${id}`;
+    const urlCreateMaterialType = `https://localhost:7259/api/material-category/${id}`;
     Swal.fire({
       title: "Bạn có muốn xóa danh mục nguyên liệu này?",
       showCancelButton: true,
@@ -1635,7 +1632,7 @@ const UpdateMaterialCategory = ({
   useEffect(() => {
     const handleDataDetail = async () => {
       setLoading(true);
-      const urlMaterialTypeDetail = `https://e-tailorapi.azurewebsites.net/api/material-category/${saveMaterialCategoryId}`;
+      const urlMaterialTypeDetail = `https://localhost:7259/api/material-category/${saveMaterialCategoryId}`;
       try {
         const response = await fetch(urlMaterialTypeDetail, {
           method: "GET",

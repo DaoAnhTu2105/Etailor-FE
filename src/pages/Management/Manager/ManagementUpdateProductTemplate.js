@@ -370,7 +370,7 @@ const ManagementUpdateProductTemplateContent = () => {
     } else if (current === 2) {
       if (saveBodySize[0].length >= 1) {
         setLoadingStep3(true);
-        const getUrl = `https://e-tailorapi.azurewebsites.net/api/template-body-size/template/${id}`;
+        const getUrl = `https://localhost:7259/api/template-body-size/template/${id}`;
         try {
           const response = await fetch(getUrl, {
             method: "PUT",
@@ -434,8 +434,7 @@ const ManagementUpdateProductTemplateContent = () => {
   const [getCategory, setCategory] = useState([]);
   const [loadingStep1, setLoadingStep1] = useState(false);
   const [step3, setStep3] = useState([]);
-  const getUrl =
-    "https://e-tailorapi.azurewebsites.net/api/category-management";
+  const getUrl = "https://localhost:7259/api/category-management";
 
   const handleGetCategory = async () => {
     try {
@@ -456,7 +455,7 @@ const ManagementUpdateProductTemplateContent = () => {
   };
   const [categoryDetailData, setCategoryDetailData] = useState({});
   const handleGetDetailCategory = async () => {
-    const getDetailUrl = `https://e-tailorapi.azurewebsites.net/api/category-management/${dataDetailForUpdate.category.id}`;
+    const getDetailUrl = `https://localhost:7259/api/category-management/${dataDetailForUpdate.category.id}`;
     try {
       const response = await fetch(getDetailUrl, {
         method: "GET",
@@ -474,7 +473,7 @@ const ManagementUpdateProductTemplateContent = () => {
     }
   };
   const handleGetDataCategoryStep3 = async () => {
-    const getDetailUrl = `https://e-tailorapi.azurewebsites.net/api/template-body-size/template/${id}/manager`;
+    const getDetailUrl = `https://localhost:7259/api/template-body-size/template/${id}/manager`;
     try {
       const response = await fetch(getDetailUrl, {
         method: "GET",
@@ -494,7 +493,7 @@ const ManagementUpdateProductTemplateContent = () => {
     }
   };
   const handleGetDataCategoryStep4 = async () => {
-    const getDetailUrl = `https://e-tailorapi.azurewebsites.net/api/template-stage/template/${id}`;
+    const getDetailUrl = `https://localhost:7259/api/template-stage/template/${id}`;
     try {
       const response = await fetch(getDetailUrl, {
         method: "GET",
@@ -573,7 +572,7 @@ const ManagementUpdateProductTemplateContent = () => {
       console.log(pair[0] + ", " + pair[1]);
     }
     setLoadingStep1(true);
-    const urlCreate = `https://e-tailorapi.azurewebsites.net/api/template-management/update-template/${id}`;
+    const urlCreate = `https://localhost:7259/api/template-management/update-template/${id}`;
     try {
       const response = await fetch(urlCreate, {
         method: "PUT",
@@ -631,7 +630,7 @@ const ManagementUpdateProductTemplateContent = () => {
     formData.append("ImageFile", values.image);
     formData.append("Default", values.default);
 
-    const urlCreateMaterialType = `https://e-tailorapi.azurewebsites.net/api/Component/template/${id}/${values.componentTypeId}`;
+    const urlCreateMaterialType = `https://localhost:7259/api/Component/template/${id}/${values.componentTypeId}`;
     try {
       const response = await fetch(urlCreateMaterialType, {
         method: "POST",
@@ -656,7 +655,7 @@ const ManagementUpdateProductTemplateContent = () => {
   };
 
   const handleGetComponentType = async () => {
-    const getDetailUrl = `https://e-tailorapi.azurewebsites.net/api/template/${id}/component-types`;
+    const getDetailUrl = `https://localhost:7259/api/template/${id}/component-types`;
     try {
       const response = await fetch(getDetailUrl, {
         method: "GET",
@@ -692,7 +691,7 @@ const ManagementUpdateProductTemplateContent = () => {
       denyButtonText: `Không xóa`,
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const getDetailUrl = `https://e-tailorapi.azurewebsites.net/api/Component/template/${templateId}/${componentTypeId}/${componentId}`;
+        const getDetailUrl = `https://localhost:7259/api/Component/template/${templateId}/${componentTypeId}/${componentId}`;
         try {
           const response = await fetch(getDetailUrl, {
             method: "DELETE",
@@ -740,7 +739,7 @@ const ManagementUpdateProductTemplateContent = () => {
   const [dataBodySize, setDataBodySize] = useState([]);
 
   const handleDataBodySize = async () => {
-    const getDetailUrl = `https://e-tailorapi.azurewebsites.net/api/body-size`;
+    const getDetailUrl = `https://localhost:7259/api/body-size`;
     try {
       const response = await fetch(getDetailUrl, {
         method: "GET",
@@ -778,7 +777,7 @@ const ManagementUpdateProductTemplateContent = () => {
   const navigate = useNavigate();
 
   const handleGetComponentTypesCategory = async () => {
-    const getlUrl = `https://e-tailorapi.azurewebsites.net/api/category/${dataDetailForUpdate?.category?.id}/component-types`;
+    const getlUrl = `https://localhost:7259/api/category/${dataDetailForUpdate?.category?.id}/component-types`;
     try {
       const response = await fetch(getlUrl, {
         method: "GET",
@@ -807,7 +806,7 @@ const ManagementUpdateProductTemplateContent = () => {
     }));
     console.log("beData", beData);
     setLoadingStep4(true);
-    const postlUrl = `https://e-tailorapi.azurewebsites.net/api/template-stage/template/${id}`;
+    const postlUrl = `https://localhost:7259/api/template-stage/template/${id}`;
     try {
       const response = await fetch(postlUrl, {
         method: "PUT",
@@ -853,7 +852,7 @@ const ManagementUpdateProductTemplateContent = () => {
 
   useEffect(() => {
     const handleGetDetail = async () => {
-      const urlProductDetail = `https://e-tailorapi.azurewebsites.net/api/template-management/detail/${id}`;
+      const urlProductDetail = `https://localhost:7259/api/template-management/detail/${id}`;
       setLoadingUpdate(true);
       try {
         const response = await fetch(`${urlProductDetail}`, {
@@ -927,7 +926,7 @@ const ManagementUpdateProductTemplateContent = () => {
   const [exportFileLoading, setExportFileLoading] = useState(false);
   const handleDownloadExportFile = async () => {
     if (id) {
-      const getlUrl = `https://e-tailorapi.azurewebsites.net/api/Component/export/template/${id}`;
+      const getlUrl = `https://localhost:7259/api/Component/export/template/${id}`;
       setExportFileLoading(true);
       const response = await fetch(getlUrl, {
         method: "GET",
@@ -984,7 +983,7 @@ const ManagementUpdateProductTemplateContent = () => {
       formData.append("file", file);
 
       const response = await fetch(
-        `https://e-tailorapi.azurewebsites.net/api/Component/import/template/${id}`,
+        `https://localhost:7259/api/Component/import/template/${id}`,
         {
           method: "POST",
           headers: {

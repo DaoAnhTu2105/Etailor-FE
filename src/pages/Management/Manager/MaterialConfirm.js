@@ -30,7 +30,7 @@ function MaterialConfirm({
   const navigate = useNavigate();
   const onConfirmMaterial = async (values) => {
     if (saveIdMaterial && saveOrderId) {
-      const url = `https://e-tailorapi.azurewebsites.net/order/${saveOrderId}`;
+      const url = `https://localhost:7259/order/${saveOrderId}`;
       try {
         const response = await fetch(`${url}`, {
           method: "PUT",

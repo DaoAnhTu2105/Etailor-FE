@@ -60,7 +60,7 @@ export const MaterialComponent = ({
         };
       });
       setMaterialLoading(true);
-      const url = `https://e-tailorapi.azurewebsites.net/api/order-material/order/${saveOrderId}`;
+      const url = `https://localhost:7259/api/order-material/order/${saveOrderId}`;
       try {
         const response = await fetch(`${url}`, {
           method: "PUT",
@@ -353,7 +353,7 @@ export const ConfirmMaterial = ({
 
   const handleDataMaterial = async () => {
     setLoadingMaterial(true);
-    const getMaterialUrl = "https://e-tailorapi.azurewebsites.net/api/material";
+    const getMaterialUrl = "https://localhost:7259/api/material";
     try {
       const response = await fetch(getMaterialUrl, {
         method: "GET",
@@ -373,7 +373,7 @@ export const ConfirmMaterial = ({
   };
   const handleDataMaterialCategory = async () => {
     const getMaterialCategoryUrl =
-      "https://e-tailorapi.azurewebsites.net/api/material-category";
+      "https://localhost:7259/api/material-category";
     try {
       const response = await fetch(getMaterialCategoryUrl, {
         method: "GET",
@@ -426,7 +426,7 @@ export const ConfirmMaterial = ({
   );
 
   const onDefinedMaterial = async (values) => {
-    const url = `https://e-tailorapi.azurewebsites.net/api/order-material/order/${saveOrderId}/customer-material`;
+    const url = `https://localhost:7259/api/order-material/order/${saveOrderId}/customer-material`;
     try {
       const response = await fetch(url, {
         method: "POST",

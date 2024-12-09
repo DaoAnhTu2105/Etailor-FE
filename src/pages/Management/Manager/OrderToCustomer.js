@@ -33,7 +33,7 @@ const OrderToCustomerContent = () => {
 
   const getDiscountForOrder = async () => {
     if (saveOrderId) {
-      const url = `https://e-tailorapi.azurewebsites.net/api/discount/order/${saveOrderId}`;
+      const url = `https://localhost:7259/api/discount/order/${saveOrderId}`;
       try {
         const response = await fetch(`${url}`, {
           method: "GET",
@@ -56,7 +56,7 @@ const OrderToCustomerContent = () => {
   };
 
   const handleSaveOrder = async () => {
-    const urlCreateNew = `https://e-tailorapi.azurewebsites.net/api/order`;
+    const urlCreateNew = `https://localhost:7259/api/order`;
 
     try {
       const response = await fetch(urlCreateNew, {
@@ -125,7 +125,7 @@ const OrderToCustomerContent = () => {
   const [profileCustomer, setProfileCustomer] = useState(null);
 
   const fetchDataProfileBody = async (id) => {
-    const urlProfile = `https://e-tailorapi.azurewebsites.net/api/profile-body/staff/customer/${id}`;
+    const urlProfile = `https://localhost:7259/api/profile-body/staff/customer/${id}`;
     try {
       const response = await fetch(`${urlProfile}`, {
         method: "GET",
@@ -160,7 +160,7 @@ const OrderToCustomerContent = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         if (saveOrderId) {
-          const urlDeleteProduct = `https://e-tailorapi.azurewebsites.net/api/product/${saveOrderId}/${id}`;
+          const urlDeleteProduct = `https://localhost:7259/api/product/${saveOrderId}/${id}`;
           try {
             const response = await fetch(`${urlDeleteProduct}`, {
               method: "DELETE",
@@ -193,7 +193,7 @@ const OrderToCustomerContent = () => {
   const handleDataOrderDetail = async () => {
     setLoadingStep2(true);
     if (saveOrderId) {
-      const urlOrderDetail = `https://e-tailorapi.azurewebsites.net/api/order/${saveOrderId}`;
+      const urlOrderDetail = `https://localhost:7259/api/order/${saveOrderId}`;
       try {
         const response = await fetch(`${urlOrderDetail}`, {
           method: "GET",
@@ -246,7 +246,7 @@ const OrderToCustomerContent = () => {
     useState(null);
 
   const getAllBodySize = async () => {
-    const url = `https://e-tailorapi.azurewebsites.net/api/body-size`;
+    const url = `https://localhost:7259/api/body-size`;
     try {
       const response = await fetch(`${url}`, {
         method: "GET",
@@ -275,7 +275,7 @@ const OrderToCustomerContent = () => {
     setInputValue(newValue);
   };
   const onCreateNewProduct = async (values) => {
-    const urlCreateNew = `https://e-tailorapi.azurewebsites.net/api/product/${saveOrderId}?quantity=${inputValue}`;
+    const urlCreateNew = `https://localhost:7259/api/product/${saveOrderId}?quantity=${inputValue}`;
     try {
       const response = await fetch(`${urlCreateNew}`, {
         method: "POST",
@@ -416,7 +416,7 @@ const OrderToCustomerContent = () => {
     setCurrent(2);
   };
   const handleUpdateProduct = async () => {
-    const urlUpdate = `https://e-tailorapi.azurewebsites.net/api/product/${saveOrderId}/${saveIdProduct}`;
+    const urlUpdate = `https://localhost:7259/api/product/${saveOrderId}/${saveIdProduct}`;
 
     if (getProfileUpdateCustomer) {
       try {
@@ -527,7 +527,7 @@ const OrderToCustomerContent = () => {
   const [loadingDiscount, setLoadingDiscount] = useState(false);
   const [saveDiscount, setSaveDiscount] = useState(null);
   const handleCheckDiscount = async (value) => {
-    const urlOrderDetail = `https://e-tailorapi.azurewebsites.net/api/discount/order/${saveOrderId}/discount?code=${value}`;
+    const urlOrderDetail = `https://localhost:7259/api/discount/order/${saveOrderId}/discount?code=${value}`;
     setLoadingDiscount(true);
     try {
       const response = await fetch(`${urlOrderDetail}`, {
@@ -700,7 +700,7 @@ const OrderToCustomerContent = () => {
             type="primary"
             onClick={async () => {
               setCreateOrderLoading(true);
-              const urlCreateNew = `https://e-tailorapi.azurewebsites.net/api/order/finish/${saveOrderId}`;
+              const urlCreateNew = `https://localhost:7259/api/order/finish/${saveOrderId}`;
               try {
                 const response = await fetch(`${urlCreateNew}`, {
                   method: "PATCH",

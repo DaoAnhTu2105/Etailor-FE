@@ -68,7 +68,7 @@ export const ViewDetailOrder = ({
   setOpenRefund,
 }) => {
   const manager = JSON.parse(localStorage.getItem("manager"));
-  const getUrl = "https://e-tailorapi.azurewebsites.net/api/order";
+  const getUrl = "https://localhost:7259/api/order";
   const [loading, setLoading] = useState(false);
   const [dataOrderDetail, setDataOrderDetail] = useState(null);
   const [viewDetailProduct, setViewDetailProduct] = useState(false);
@@ -121,7 +121,7 @@ export const ViewDetailOrder = ({
   const handleViewProductDetail = async (id, index) => {
     setLoadingDetailProduct(true);
     setIndexDetail(index);
-    const detailUrl = `https://e-tailorapi.azurewebsites.net/api/task/${id}`;
+    const detailUrl = `https://localhost:7259/api/task/${id}`;
     try {
       const response = await fetch(`${detailUrl}`, {
         method: "GET",
@@ -148,7 +148,7 @@ export const ViewDetailOrder = ({
 
   const [getAllChat, setGetAllChat] = useState([]);
   const fetchChat = async () => {
-    const GET_CHAT_API = `https://e-tailorapi.azurewebsites.net/api/chat/order/${saveIdOrder}`;
+    const GET_CHAT_API = `https://localhost:7259/api/chat/order/${saveIdOrder}`;
     try {
       const response = await fetch(GET_CHAT_API, {
         headers: {
@@ -324,7 +324,7 @@ export const ViewDetailOrder = ({
 
   const handleCreatePayCash = async (amount, payType, platform) => {
     setPaymentLoading(true);
-    const urlCreateNew = `https://e-tailorapi.azurewebsites.net/api/payment/${saveIdOrder}?amount=${amount}&payType=${payType}&platform=${platform}`;
+    const urlCreateNew = `https://localhost:7259/api/payment/${saveIdOrder}?amount=${amount}&payType=${payType}&platform=${platform}`;
     try {
       const response = await fetch(`${urlCreateNew}`, {
         method: "POST",
@@ -743,7 +743,7 @@ export const ViewDetailOrder = ({
 
   const handleDefectsOrder = async (id) => {
     setLoadingDefect(true);
-    const url = `https://e-tailorapi.azurewebsites.net/api/product/${saveIdOrder}/${id}/defects`;
+    const url = `https://localhost:7259/api/product/${saveIdOrder}/${id}/defects`;
     try {
       const response = await fetch(`${url}`, {
         method: "PUT",
@@ -770,7 +770,7 @@ export const ViewDetailOrder = ({
   const [checking, setChecking] = useState(false);
   const handleCheckOrder = async (id) => {
     setChecking(true);
-    const url = `https://e-tailorapi.azurewebsites.net/api/order/finish-check/${id}`;
+    const url = `https://localhost:7259/api/order/finish-check/${id}`;
     try {
       const response = await fetch(`${url}`, {
         method: "PATCH",
@@ -795,7 +795,7 @@ export const ViewDetailOrder = ({
   const [done, setDone] = useState(false);
   const handleDoneOrder = async (id) => {
     setDone(true);
-    const url = `https://e-tailorapi.azurewebsites.net/api/order/done/${id}`;
+    const url = `https://localhost:7259/api/order/done/${id}`;
     try {
       const response = await fetch(`${url}`, {
         method: "PATCH",

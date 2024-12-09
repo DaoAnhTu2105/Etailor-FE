@@ -3,25 +3,40 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import "./order.css";
-import Highlighter from 'react-highlight-words';
-import SendIcon from '@mui/icons-material/Send';
+import Highlighter from "react-highlight-words";
+import SendIcon from "@mui/icons-material/Send";
 import LeftBanner from "../../../assets/images/banner-blog/still-life-spring-wardrobe-switch (1).jpg";
 import RightBanner from "../../../assets/images/banner-blog/still-life-spring-wardrobe-switch.jpg";
 import NoOrder from "../../../assets/images/2011.i203.010..hobby cartoon set-06.jpg";
 import { DownOutlined } from "@ant-design/icons";
-import { Divider, Table, Tag, Avatar, Image, Row, Col, Input, Space } from "antd";
+import {
+  Divider,
+  Table,
+  Tag,
+  Avatar,
+  Image,
+  Row,
+  Col,
+  Input,
+  Space,
+} from "antd";
 import { useQuery } from "react-query";
 import { render } from "@testing-library/react";
-import Accordion from '@mui/material/Accordion';
-import AccordionActions from '@mui/material/AccordionActions';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button';
+import Accordion from "@mui/material/Accordion";
+import AccordionActions from "@mui/material/AccordionActions";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import { EyeOutlined, UserOutlined, CheckCircleFilled, SearchOutlined } from '@ant-design/icons';
+import {
+  EyeOutlined,
+  UserOutlined,
+  CheckCircleFilled,
+  SearchOutlined,
+} from "@ant-design/icons";
 import { faImage, faPaperclip } from "@fortawesome/free-solid-svg-icons";
-import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 
 function formatString(str) {
   if (str.length <= 8) return str;
@@ -102,8 +117,8 @@ const formatDate = (date) => {
   return formattedDate;
 };
 export default function Order() {
-  const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
+  const [searchText, setSearchText] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -112,10 +127,16 @@ export default function Order() {
   };
   const handleReset = (clearFilters) => {
     clearFilters();
-    setSearchText('');
+    setSearchText("");
   };
   const getColumnSearchProps = (dataIndex) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
       <div
         style={{
           padding: 8,
@@ -126,11 +147,13 @@ export default function Order() {
           ref={searchInput}
           placeholder={`Tìm kiếm ngày`}
           value={selectedKeys[0]}
-          onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
           style={{
             marginBottom: 8,
-            display: 'block',
+            display: "block",
           }}
         />
         <Space>
@@ -182,7 +205,7 @@ export default function Order() {
     filterIcon: (filtered) => (
       <SearchOutlined
         style={{
-          color: filtered ? '#1677ff' : undefined,
+          color: filtered ? "#1677ff" : undefined,
         }}
       />
     ),
@@ -197,12 +220,12 @@ export default function Order() {
       searchedColumn === dataIndex ? (
         <Highlighter
           highlightStyle={{
-            backgroundColor: '#ffc069',
+            backgroundColor: "#ffc069",
             padding: 0,
           }}
           searchWords={[searchText]}
           autoEscape
-          textToHighlight={text ? text.toString() : ''}
+          textToHighlight={text ? text.toString() : ""}
         />
       ) : (
         text
@@ -213,14 +236,13 @@ export default function Order() {
     {
       title: "Stt",
       dataIndex: "index",
-
     },
     {
       title: "Mã đơn hàng",
       dataIndex: "orderID",
       render: (orderID) => {
         return <p style={{ fontWeight: "bold" }}>{orderID}</p>;
-      }
+      },
     },
     {
       title: "Số lượng",
@@ -228,7 +250,7 @@ export default function Order() {
       sorter: (a, b) => a.quantity - b.quantity,
       render: (quantity) => {
         return <p style={{ textAlign: "center" }}>{quantity}</p>;
-      }
+      },
     },
     {
       title: "Trạng thái",
@@ -251,7 +273,7 @@ export default function Order() {
     {
       title: "Ngày mua",
       dataIndex: "date",
-      ...getColumnSearchProps('date'),
+      ...getColumnSearchProps("date"),
     },
     {
       title: "",
@@ -262,21 +284,29 @@ export default function Order() {
       render: (text, record) => (
         <>
           {record.status === 0 ? (
-
-            < p
-              style={{ fontSize: 12, fontWeight: "bold", color: "rgba(16, 16, 16, 0.3", cursor: "pointer" }}
+            <p
+              style={{
+                fontSize: 12,
+                fontWeight: "bold",
+                color: "rgba(16, 16, 16, 0.3",
+                cursor: "pointer",
+              }}
             >
               Xem chi tiết
             </p>
           ) : (
             <p
               onClick={() => handleViewDetail(record.orderID, record.status)}
-              style={{ fontSize: 12, fontWeight: "bold", color: "primary", cursor: "pointer" }}
+              style={{
+                fontSize: 12,
+                fontWeight: "bold",
+                color: "primary",
+                cursor: "pointer",
+              }}
             >
               Xem chi tiết
             </p>
-          )
-          }
+          )}
         </>
       ),
     },
@@ -284,7 +314,7 @@ export default function Order() {
   const customer = localStorage.getItem("customer");
   const token = JSON.parse(customer)?.token;
   const { data: getOrdersAPI, isLoading } = useQuery("get-order", () =>
-    fetch(`https://e-tailorapi.azurewebsites.net/api/order`, {
+    fetch(`https://localhost:7259/api/order`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -312,10 +342,10 @@ export default function Order() {
   const [bottom, setBottom] = useState("bottomCenter");
   const [ellipsis, setEllipsis] = useState(false);
   const handleViewDetail = (id, status) => {
-    console.log("detail id;", id)
-    console.log("status:", status)
-    navigate(`/orders/${id}`)
-  }
+    console.log("detail id;", id);
+    console.log("status:", status);
+    navigate(`/orders/${id}`);
+  };
   const tableColumns = columns.map((item) => ({
     ...item,
     ellipsis,

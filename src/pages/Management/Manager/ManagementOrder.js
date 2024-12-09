@@ -25,7 +25,7 @@ const ManagementOrderContent = () => {
   const manager = JSON.parse(localStorage.getItem("manager"));
   const [dataOrder, setDataOrder] = useState([]);
   const [loading, setLoading] = useState([]);
-  const getUrl = "https://e-tailorapi.azurewebsites.net/api/order";
+  const getUrl = "https://localhost:7259/api/order";
 
   const handleDataOrder = async () => {
     setLoading(true);
@@ -74,7 +74,7 @@ const ManagementOrderContent = () => {
   };
   const handleApproveOrder = async (id) => {
     setApproveOrderLoading(true);
-    const getUrl = `https://e-tailorapi.azurewebsites.net/api/order/approve/${id}`;
+    const getUrl = `https://localhost:7259/api/order/approve/${id}`;
     try {
       const response = await fetch(getUrl, {
         method: "PATCH",
@@ -124,7 +124,7 @@ const ManagementOrderContent = () => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         setCancelOrderLoading(true);
-        const getUrl = `https://e-tailorapi.azurewebsites.net/api/order/cancel/${id}`;
+        const getUrl = `https://localhost:7259/api/order/cancel/${id}`;
         try {
           const response = await fetch(getUrl, {
             method: "DELETE",

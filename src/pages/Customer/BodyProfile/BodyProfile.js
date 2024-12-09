@@ -2,7 +2,18 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import {
-  Typography, Button, Flex, Divider, Carousel, Input, Table, Checkbox, Modal, Form, Radio, Spin
+  Typography,
+  Button,
+  Flex,
+  Divider,
+  Carousel,
+  Input,
+  Table,
+  Checkbox,
+  Modal,
+  Form,
+  Radio,
+  Spin,
 } from "antd";
 import { useQuery, useQueryClient, queryClient } from "react-query";
 import Loading from "../LoadingComponent/loading";
@@ -23,14 +34,23 @@ const formatDate = (date) => {
   return formattedDate;
 };
 
-const UpdateBodyProfileModal = ({ open, onCancel, detailData, updateLoading, id, handleUpdateProfileSuccess }) => {
+const UpdateBodyProfileModal = ({
+  open,
+  onCancel,
+  detailData,
+  updateLoading,
+  id,
+  handleUpdateProfileSuccess,
+}) => {
   const [currentGuideImage, setCurrentGuideImage] = useState(BangSize);
   const [modifiedDetailData, setModifiedDetailData] = useState({});
-  const [updateBodyProfileName, setUpdateBodyProfileName] = useState(detailData?.name ? detailData?.name : "");
+  const [updateBodyProfileName, setUpdateBodyProfileName] = useState(
+    detailData?.name ? detailData?.name : ""
+  );
 
   useEffect(() => {
-    setModifiedDetailData(detailData)
-    setUpdateBodyProfileName(detailData?.name)
+    setModifiedDetailData(detailData);
+    setUpdateBodyProfileName(detailData?.name);
   }, [detailData]);
 
   console.log("Modified detail data:", modifiedDetailData);
@@ -41,31 +61,37 @@ const UpdateBodyProfileModal = ({ open, onCancel, detailData, updateLoading, id,
   const [valueBodyAttribute, setValueBodyAttribute] = useState([]);
 
   const handleInputChange = async (attributeId, value, parentId) => {
-    const existingIndex = modifiedDetailData.bodyAttributes.findIndex((item) => item.id === parentId);
+    const existingIndex = modifiedDetailData.bodyAttributes.findIndex(
+      (item) => item.id === parentId
+    );
 
     if (existingIndex !== -1) {
       const updatedDetailData = { ...modifiedDetailData };
       updatedDetailData.bodyAttributes = [...updatedDetailData.bodyAttributes];
-      const updatedAttribute = { ...updatedDetailData.bodyAttributes[existingIndex] };
+      const updatedAttribute = {
+        ...updatedDetailData.bodyAttributes[existingIndex],
+      };
       updatedAttribute.value = value;
       updatedDetailData.bodyAttributes[existingIndex] = updatedAttribute;
 
       setModifiedDetailData(updatedDetailData);
     }
 
-    const existingValueIndex = valueBodyAttribute.findIndex(item => item.id === attributeId);
+    const existingValueIndex = valueBodyAttribute.findIndex(
+      (item) => item.id === attributeId
+    );
 
     if (existingValueIndex !== -1) {
       const updatedValueBodyAttribute = [...valueBodyAttribute];
       updatedValueBodyAttribute[existingValueIndex] = {
         ...updatedValueBodyAttribute[existingValueIndex],
-        value: value
+        value: value,
       };
       setValueBodyAttribute(updatedValueBodyAttribute);
     } else {
-      setValueBodyAttribute(prevState => [
+      setValueBodyAttribute((prevState) => [
         ...prevState,
-        { id: attributeId, value: value }
+        { id: attributeId, value: value },
       ]);
     }
 
@@ -80,7 +106,7 @@ const UpdateBodyProfileModal = ({ open, onCancel, detailData, updateLoading, id,
   const [validationMessages, setValidationMessages] = useState({});
 
   const validateInput = (id, value) => {
-    console.log("ALL:", detailData?.bodyAttributes)
+    console.log("ALL:", detailData?.bodyAttributes);
     const attribute = detailData?.bodyAttributes.find((item) => item.id === id);
     if (!attribute) return;
 
@@ -98,19 +124,18 @@ const UpdateBodyProfileModal = ({ open, onCancel, detailData, updateLoading, id,
       [id]: isValid ? "" : `Số đo từ ${min} ~ ${max} cm`,
     }));
   };
-  
 
   const handleUpdateBodyProfileName = async (name) => {
-    console.log("Update name:", name)
-    setUpdateBodyProfileName(name)
-  }
-  const [profileID, setProfileID] = useState(id)
-  console.log("Profile ID:", profileID)
+    console.log("Update name:", name);
+    setUpdateBodyProfileName(name);
+  };
+  const [profileID, setProfileID] = useState(id);
+  console.log("Profile ID:", profileID);
 
   const handleUpdateProfile = async () => {
-    console.log("Name:", updateBodyProfileName)
+    console.log("Name:", updateBodyProfileName);
     const id = detailData.id;
-    const UPDATE_PROFILE_URL = `https://e-tailorapi.azurewebsites.net/api/profile-body/customer/${id}`;
+    const UPDATE_PROFILE_URL = `https://localhost:7259/api/profile-body/customer/${id}`;
     const customer = localStorage.getItem("customer");
     const token = JSON.parse(customer)?.token;
     try {
@@ -141,7 +166,7 @@ const UpdateBodyProfileModal = ({ open, onCancel, detailData, updateLoading, id,
       console.error("Error:", error);
     }
   };
-  console.log("Detail data:", modifiedDetailData)
+  console.log("Detail data:", modifiedDetailData);
   return (
     <Modal
       open={open}
@@ -157,13 +182,11 @@ const UpdateBodyProfileModal = ({ open, onCancel, detailData, updateLoading, id,
         color: "#9F78FF",
         maxHeight: 550,
         overflow: "hidden",
-        minHeight: 500
+        minHeight: 500,
       }}
       width={900}
       onOk={() => handleUpdateProfile(profileID)}
     >
-
-
       {!updateLoading ? (
         <div className="example">
           <Spin />
@@ -217,73 +240,76 @@ const UpdateBodyProfileModal = ({ open, onCancel, detailData, updateLoading, id,
                       {index === 1
                         ? "I. Phần đầu"
                         : index === 2
-                          ? "II. Phần thân trên"
-                          : "III. Phần thân dưới"}
+                        ? "II. Phần thân trên"
+                        : "III. Phần thân dưới"}
                     </p>
                     {modifiedDetailData &&
-                      modifiedDetailData?.bodyAttributes.map((attribute, attrIndex) => {
-                        if (attribute?.bodySize?.bodyIndex === index) {
-                          return (
-                            <div
-                              key={attrIndex}
-                              className="field"
-                              style={{ paddingLeft: "20px" }}
-                            >
+                      modifiedDetailData?.bodyAttributes.map(
+                        (attribute, attrIndex) => {
+                          if (attribute?.bodySize?.bodyIndex === index) {
+                            return (
                               <div
-                                style={{
-                                  alignItems: "center",
-                                  paddingLeft: 5,
-                                  display: "flex",
-                                  paddingBottom: 5,
-                                }}
+                                key={attrIndex}
+                                className="field"
+                                style={{ paddingLeft: "20px" }}
                               >
-                                <label
-                                  className="title is-3 "
+                                <div
                                   style={{
-                                    display: "block",
-                                    margin: 0,
-                                    width: 150,
+                                    alignItems: "center",
+                                    paddingLeft: 5,
+                                    display: "flex",
+                                    paddingBottom: 5,
                                   }}
                                 >
-                                  {attribute?.bodySize?.name}
-                                </label>
-                                {validationMessages[attribute?.id] && (
-                                  <p style={{ color: "red", marginLeft: 10 }}>
-                                    {validationMessages[attribute?.id]}
-                                  </p>
-                                )}
+                                  <label
+                                    className="title is-3 "
+                                    style={{
+                                      display: "block",
+                                      margin: 0,
+                                      width: 150,
+                                    }}
+                                  >
+                                    {attribute?.bodySize?.name}
+                                  </label>
+                                  {validationMessages[attribute?.id] && (
+                                    <p style={{ color: "red", marginLeft: 10 }}>
+                                      {validationMessages[attribute?.id]}
+                                    </p>
+                                  )}
+                                </div>
+
+                                <input
+                                  className="input is-normal"
+                                  autoComplete="off"
+                                  onClick={() => {
+                                    handleImageGuide(
+                                      attribute?.bodySize?.image
+                                    );
+                                  }}
+                                  name={`${attribute?.id}`}
+                                  type="text"
+                                  placeholder={`${attribute?.bodySize?.minValidValue}~${attribute?.bodySize?.maxValidValue} cm`}
+                                  style={{
+                                    height: 35,
+                                    textAlign: "center",
+                                    borderRadius: 5,
+                                    width: 300,
+                                  }}
+                                  onChange={(e) =>
+                                    handleInputChange(
+                                      attribute?.bodySize?.id,
+                                      e.target.value,
+                                      attribute?.id
+                                    )
+                                  }
+                                  value={attribute?.value}
+                                />
                               </div>
-
-                              <input
-                                className="input is-normal"
-                                autoComplete="off"
-                                onClick={() => {
-                                  handleImageGuide(attribute?.bodySize?.image);
-                                }}
-                                name={`${attribute?.id}`}
-                                type="text"
-                                placeholder={`${attribute?.bodySize?.minValidValue}~${attribute?.bodySize?.maxValidValue} cm`}
-                                style={{
-                                  height: 35,
-                                  textAlign: "center",
-                                  borderRadius: 5,
-                                  width: 300,
-                                }}
-                                onChange={(e) =>
-                                  handleInputChange(
-                                    attribute?.bodySize?.id,
-                                    e.target.value,
-                                    attribute?.id
-                                  )
-                                }
-                                value={attribute?.value}
-                              />
-                            </div>
-                          );
+                            );
+                          }
+                          return null;
                         }
-                        return null;
-                      })}
-
+                      )}
                   </div>
                 ))}
               </div>
@@ -324,18 +350,22 @@ const UpdateBodyProfileModal = ({ open, onCancel, detailData, updateLoading, id,
           </div>
         </div>
       )}
-
     </Modal>
   );
 };
-const CustomerBodyProfile = ({ loadProfile, allBodySize, getBodyProfile, getAllProfileLoading }) => {
+const CustomerBodyProfile = ({
+  loadProfile,
+  allBodySize,
+  getBodyProfile,
+  getAllProfileLoading,
+}) => {
   const navigate = useNavigate();
   const customer = localStorage.getItem("customer");
   const token = JSON.parse(customer)?.token;
   const handleUpdateProfileSuccess = () => {
     setOpenUpdateModal(false);
     loadProfile();
-  }
+  };
   // const { data: getBodyProfile, isLoading: getAllProfileLoading } = useQuery("get-all-bodyProfile", () =>
   //   fetch(`https://etailorapi.azurewebsites.net/api/profile-body`, {
   //     headers: {
@@ -344,32 +374,31 @@ const CustomerBodyProfile = ({ loadProfile, allBodySize, getBodyProfile, getAllP
   //     },
   //   }).then((response) => response.json())
   // );
-  const [detailProfile, setDetailProfile] = useState('')
-  const [updateLoading, setUpdateLoading] = useState(false)
-  const [updateProfileId, setUpdateProfileId] = useState('')
+  const [detailProfile, setDetailProfile] = useState("");
+  const [updateLoading, setUpdateLoading] = useState(false);
+  const [updateProfileId, setUpdateProfileId] = useState("");
   const handleEdit = async (id) => {
     setOpenUpdateModal(true);
     if (id) {
-      const GET_DETAIL_PROFILE_URL = `https://e-tailorapi.azurewebsites.net/api/profile-body/${id}`;
+      const GET_DETAIL_PROFILE_URL = `https://localhost:7259/api/profile-body/${id}`;
       fetch(GET_DETAIL_PROFILE_URL, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
       })
         .then((response) => response.json())
         .then((data) => {
           setDetailProfile(data);
-          setUpdateLoading(true)
-          setUpdateProfileId(data.id)
+          setUpdateLoading(true);
+          setUpdateProfileId(data.id);
         })
         .catch((error) => {
           console.error("Error fetching blog detail:", error);
-          setUpdateLoading(false)
+          setUpdateLoading(false);
         });
     }
-
-  }
+  };
   const [formValues, setFormValues] = useState();
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
   const onCreate = (values) => {
@@ -386,7 +415,7 @@ const CustomerBodyProfile = ({ loadProfile, allBodySize, getBodyProfile, getAllP
       cancelButtonText: "Huỷ",
     }).then(async (result) => {
       if (result.isDenied) {
-        const DELETE_PROFILE_URL = `https://e-tailorapi.azurewebsites.net/api/profile-body/${id}`;
+        const DELETE_PROFILE_URL = `https://localhost:7259/api/profile-body/${id}`;
         const customer = localStorage.getItem("customer");
         const token = JSON.parse(customer)?.token;
         try {
@@ -404,7 +433,6 @@ const CustomerBodyProfile = ({ loadProfile, allBodySize, getBodyProfile, getAllP
               title: "Xoá thành công",
               timer: 2000,
             });
-
           } else {
             const errorText = await response.text();
           }
@@ -425,7 +453,6 @@ const CustomerBodyProfile = ({ loadProfile, allBodySize, getBodyProfile, getAllP
 
   return (
     <>
-
       <table className="table" style={{ width: "100%" }}>
         <thead>
           <tr>
@@ -480,13 +507,10 @@ const CustomerBodyProfile = ({ loadProfile, allBodySize, getBodyProfile, getAllP
                   </td>
                 </tr>
               </>
-
             ))
           ) : (
             <div>Loading....</div>
-          )
-          }
-
+          )}
         </tbody>
       </table>
       <UpdateBodyProfileModal
@@ -496,7 +520,7 @@ const CustomerBodyProfile = ({ loadProfile, allBodySize, getBodyProfile, getAllP
         updateLoading={updateLoading}
         detailData={detailProfile}
         initialValues={{
-          modifier: 'public',
+          modifier: "public",
         }}
         handleUpdateProfileSuccess={handleUpdateProfileSuccess}
         id={updateProfileId}
@@ -562,7 +586,7 @@ export default function BodyProfile() {
     setGuideImg(attribute[0]?.image);
   };
   const handleCreateBodySize = async () => {
-    const PROFILE_URL = `https://e-tailorapi.azurewebsites.net/api/profile-body`;
+    const PROFILE_URL = `https://localhost:7259/api/profile-body`;
     const customer = localStorage.getItem("customer");
     const token = JSON.parse(customer)?.token;
     try {
@@ -586,7 +610,7 @@ export default function BodyProfile() {
           title: "Tạo mới thành công",
           timer: 2000,
         });
-        fetchProfileData()
+        fetchProfileData();
       } else {
         const errorText = await response.text();
       }
@@ -605,13 +629,13 @@ export default function BodyProfile() {
     }
   }, [hasFetchedData]);
 
-  const [getLoading, setGetLoading] = useState(true)
-  const [getBodyProfile, setGetBodyProfile] = useState('')
+  const [getLoading, setGetLoading] = useState(true);
+  const [getBodyProfile, setGetBodyProfile] = useState("");
   const fetchProfileData = async () => {
     const customer = localStorage.getItem("customer");
     const token = JSON.parse(customer)?.token;
     try {
-      const response = await fetch(`https://e-tailorapi.azurewebsites.net/api/profile-body`, {
+      const response = await fetch(`https://localhost:7259/api/profile-body`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -622,7 +646,7 @@ export default function BodyProfile() {
         setHasFetchedData(true);
         const data = await response.json();
         setGetBodyProfile(data);
-        setGetLoading(false)
+        setGetLoading(false);
       }
     } catch (error) {
       console.error("Error fetching profile data:", error);
@@ -640,14 +664,13 @@ export default function BodyProfile() {
   const { data: getAllBodyAttributes, isLoading } = useQuery(
     "get-all-bodyAtrributes",
     () =>
-      fetch(`https://e-tailorapi.azurewebsites.net/api/body-size`, {
+      fetch(`https://localhost:7259/api/body-size`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       }).then((response) => response.json())
   );
-
 
   return (
     <div>
@@ -724,8 +747,8 @@ export default function BodyProfile() {
                       {index === 1
                         ? "I. Phần đầu"
                         : index === 2
-                          ? "II. Phần thân trên"
-                          : "III. Phần thân dưới"}
+                        ? "II. Phần thân trên"
+                        : "III. Phần thân dưới"}
                     </p>
                     {getAllBodyAttributes &&
                       getAllBodyAttributes.map((attribute, attrIndex) => {
@@ -824,7 +847,6 @@ export default function BodyProfile() {
                   alt="Guide"
                 />
               </div>
-
             </div>
           </div>
         </div>
@@ -832,9 +854,13 @@ export default function BodyProfile() {
         } */}
       </Modal>
       <div style={{ width: "100%", paddingTop: "20px" }}>
-        <CustomerBodyProfile loadProfile={fetchProfileData} getBodyProfile={getBodyProfile} getAllProfileLoading={getLoading} allBodySize={getAllBodyAttributes} />
+        <CustomerBodyProfile
+          loadProfile={fetchProfileData}
+          getBodyProfile={getBodyProfile}
+          getAllProfileLoading={getLoading}
+          allBodySize={getAllBodyAttributes}
+        />
       </div>
     </div>
   );
-
 }

@@ -48,16 +48,13 @@ export const InfoManager = () => {
   const handleGetInfo = async () => {
     setLoading(true);
     try {
-      const response = await fetch(
-        `https://e-tailorapi.azurewebsites.net/api/staff/info`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${manager?.token}`,
-          },
-        }
-      );
+      const response = await fetch(`https://localhost:7259/api/staff/info`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${manager?.token}`,
+        },
+      });
 
       if (response.ok) {
         const responseData = await response.json();
@@ -76,7 +73,7 @@ export const InfoManager = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://e-tailorapi.azurewebsites.net/api/category-management`,
+        `https://localhost:7259/api/category-management`,
         {
           method: "GET",
           headers: {
@@ -125,7 +122,7 @@ export const InfoManager = () => {
     };
     try {
       const response = await fetch(
-        `https://e-tailorapi.azurewebsites.net/api/staff/change-password`,
+        `https://localhost:7259/api/staff/change-password`,
         {
           method: "PATCH",
           headers: {

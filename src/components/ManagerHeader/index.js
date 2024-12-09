@@ -26,7 +26,7 @@ const ManagerHeader = ({ name, link, iconHome, iconRoute }) => {
   console.log("manager", manager);
 
   const fetchNotification = async () => {
-    const GET_NOTIFICATIONS = `https://e-tailorapi.azurewebsites.net/api/notification/get-notification`;
+    const GET_NOTIFICATIONS = `https://localhost:7259/api/notification/get-notification`;
     try {
       const response = await fetch(GET_NOTIFICATIONS, {
         method: "GET",
@@ -48,7 +48,7 @@ const ManagerHeader = ({ name, link, iconHome, iconRoute }) => {
   };
   const handleReadNotification = async (id) => {
     setLoadingNotification(id);
-    const GET_NOTIFICATIONS = `https://e-tailorapi.azurewebsites.net/api/notification/get-notification/${id}`;
+    const GET_NOTIFICATIONS = `https://localhost:7259/api/notification/get-notification/${id}`;
     try {
       const response = await fetch(GET_NOTIFICATIONS, {
         method: "GET",

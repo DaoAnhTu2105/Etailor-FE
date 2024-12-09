@@ -36,7 +36,7 @@ function StepOne({
       if (!checkForm) return 0;
 
       const getAllValues = formInfoCustomer.getFieldsValue();
-      const url = `https://e-tailorapi.azurewebsites.net/api/customer-management/staff/customer`;
+      const url = `https://localhost:7259/api/customer-management/staff/customer`;
       setCreateCustomerLoading(true);
 
       const response = await fetch(url, {
@@ -77,7 +77,7 @@ function StepOne({
   useEffect(() => {
     let timer;
     const fetchData = async () => {
-      const urlSearchIfo = `https://e-tailorapi.azurewebsites.net/api/customer-management`;
+      const urlSearchIfo = `https://localhost:7259/api/customer-management`;
       try {
         setIsLoading(true);
         const response = await fetch(`${urlSearchIfo}?search=${searchInfo}`, {
@@ -174,7 +174,7 @@ function StepOne({
                     showArrow={false}
                     filterOption={false}
                     onChange={async (value) => {
-                      const urlGetDetail = `https://e-tailorapi.azurewebsites.net/api/customer-management/info/${value}`;
+                      const urlGetDetail = `https://localhost:7259/api/customer-management/info/${value}`;
                       try {
                         const response = await fetch(urlGetDetail, {
                           method: "GET",

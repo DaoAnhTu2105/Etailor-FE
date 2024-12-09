@@ -24,7 +24,7 @@
 //   const admin = JSON.parse(localStorage.getItem("admin"));
 
 //   const logoutAdminUrl =
-//     "https://e-tailorapi.azurewebsites.net/api/auth/staff/logout";
+//     "https://localhost:7259/api/auth/staff/logout";
 
 //   const handleClick = (value) => {
 //     if (value === isActive) {
@@ -215,8 +215,7 @@ export const AdminSidebar = () => {
   const admin = JSON.parse(localStorage.getItem("admin"));
   const active = useRef(localStorage.getItem("activeKey") || "/admin");
   console.log("active", active);
-  const logoutAdminUrl =
-    "https://e-tailorapi.azurewebsites.net/api/auth/staff/logout";
+  const logoutAdminUrl = "https://localhost:7259/api/auth/staff/logout";
 
   const items = [
     {

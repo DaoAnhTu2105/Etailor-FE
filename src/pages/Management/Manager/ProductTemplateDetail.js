@@ -168,7 +168,7 @@ const ManagementProductDetailContent = () => {
   console.log("dataDetail", dataDetail);
   useEffect(() => {
     const handleGetDetail = async () => {
-      const urlProductDetail = `https://e-tailorapi.azurewebsites.net/api/template-management/detail/${id}`;
+      const urlProductDetail = `https://localhost:7259/api/template-management/detail/${id}`;
       // const urlProductDetail = `https://localhost:7259/api/template-management/detail/${id}`;
       setLoading(true);
       try {
@@ -190,7 +190,7 @@ const ManagementProductDetailContent = () => {
       }
     };
     const handleGetTemplateStage = async () => {
-      const urlProductDetail = `https://e-tailorapi.azurewebsites.net/api/template-stage/template/${id}`;
+      const urlProductDetail = `https://localhost:7259/api/template-stage/template/${id}`;
       setLoading(true);
       try {
         const response = await fetch(`${urlProductDetail}`, {
@@ -214,7 +214,7 @@ const ManagementProductDetailContent = () => {
   }, []);
   useEffect(() => {
     const handleGetDetail = async () => {
-      const url = `https://e-tailorapi.azurewebsites.net/api/template/${id}/component-types`;
+      const url = `https://localhost:7259/api/template/${id}/component-types`;
       try {
         const response = await fetch(`${url}`, {
           method: "GET",
@@ -242,7 +242,7 @@ const ManagementProductDetailContent = () => {
     }).then(async (result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        const deleteUrl = `https://e-tailorapi.azurewebsites.net/api/template-management/delete-template/${id}`;
+        const deleteUrl = `https://localhost:7259/api/template-management/delete-template/${id}`;
         try {
           const response = await fetch(deleteUrl, {
             method: "DELETE",

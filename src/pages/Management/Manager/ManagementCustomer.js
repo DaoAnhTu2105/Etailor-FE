@@ -53,10 +53,8 @@ const ManagementCustomerContent = () => {
   const [loading, setLoading] = useState(false);
   const [detailLoading, setDetailLoading] = useState(false);
 
-  const getUrl =
-    "https://e-tailorapi.azurewebsites.net/api/customer-management";
-  const getDetailUrl =
-    "https://e-tailorapi.azurewebsites.net/api/customer-management/info/";
+  const getUrl = "https://localhost:7259/api/customer-management";
+  const getDetailUrl = "https://localhost:7259/api/customer-management/info/";
 
   const handleGetCustomer = async () => {
     setLoading(true);

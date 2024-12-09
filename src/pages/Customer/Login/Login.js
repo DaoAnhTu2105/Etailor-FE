@@ -75,7 +75,7 @@ export default function Login({ openModal, closeModal }) {
   const checkOTPEmail = async () => {
     console.log("OTP:", otpValues);
     setLoading(true);
-    const CHECK_OTP_URL = `https://e-tailorapi.azurewebsites.net/api/auth/customer/verify-otp`;
+    const CHECK_OTP_URL = `https://localhost:7259/api/auth/customer/verify-otp`;
     try {
       const response = await fetch(CHECK_OTP_URL, {
         method: "POST",
@@ -108,7 +108,7 @@ export default function Login({ openModal, closeModal }) {
 
   const handleVerifyEmail = async () => {
     setLoadingSendMail(true);
-    const VERIFY_MAIL_URL = `https://e-tailorapi.azurewebsites.net/api/auth/customer/verify-email?email=${values.regis_email}`;
+    const VERIFY_MAIL_URL = `https://localhost:7259/api/auth/customer/verify-email?email=${values.regis_email}`;
     try {
       const response = await fetch(VERIFY_MAIL_URL, {
         method: "GET",
@@ -148,7 +148,7 @@ export default function Login({ openModal, closeModal }) {
       email: values.login_email,
       password: values.login_password,
     });
-    const LOGIN_URL = `https://e-tailorapi.azurewebsites.net/api/auth/customer/login`;
+    const LOGIN_URL = `https://localhost:7259/api/auth/customer/login`;
     try {
       const response = await fetch(LOGIN_URL, {
         method: "POST",
@@ -168,10 +168,9 @@ export default function Login({ openModal, closeModal }) {
         console.log(response);
         closeModal();
         localStorage.setItem("customer", JSON.stringify(data));
-      }
-      else {
+      } else {
         const errorText = await response.text();
-        console.log("error at login:", errorText)
+        console.log("error at login:", errorText);
 
         setError(() => ({ ...error, email_err: errorText }));
       }
@@ -191,7 +190,7 @@ export default function Login({ openModal, closeModal }) {
     setSendSuccess(false);
     setForgetEmail("");
     setLoginOrReg("FORGET_PASSWORD");
-  }
+  };
   const handleLoginClick = () => {
     setLoginOrReg("LOGIN");
   };
@@ -225,7 +224,7 @@ export default function Login({ openModal, closeModal }) {
     formData.append("Username", values.regis_username);
     formData.append("Password", values.regis_password);
 
-    const LOGIN_URL = `https://e-tailorapi.azurewebsites.net/api/customer-management/regis`;
+    const LOGIN_URL = `https://localhost:7259/api/customer-management/regis`;
     try {
       const response = await fetch(LOGIN_URL, {
         method: "POST",
@@ -263,7 +262,7 @@ export default function Login({ openModal, closeModal }) {
     console.log("forgetEmail:", forgetEmail);
     if (forgetEmail && forgetEmail.trim().length > 0) {
       setLoading(true);
-      const FORGET_PASSWORD_URL = `https://e-tailorapi.azurewebsites.net/api/auth/customer/reset-password/${forgetEmail}`;
+      const FORGET_PASSWORD_URL = `https://localhost:7259/api/auth/customer/reset-password/${forgetEmail}`;
       try {
         const response = await fetch(FORGET_PASSWORD_URL, {
           method: "POST",
@@ -286,7 +285,7 @@ export default function Login({ openModal, closeModal }) {
     } else {
       setEmailErr("Vui lòng nhập email của bạn");
     }
-  }
+  };
   return (
     <div>
       <Modal
@@ -656,17 +655,37 @@ export default function Login({ openModal, closeModal }) {
                     {sendSuccess ? (
                       <>
                         <div style={{ width: "100%", height: "100%" }}>
-                          <div style={{ margin: "50px 0 0 30px", alignItems: 'center', display: "flex", flexDirection: "column" }}>
-                            <img src={SuccessEmailIcon} width={50} height={50} alt="Success" style={{ alignSelf: 'center' }} />
-                            <p style={{ fontSize: 15, marginTop: 20 }}>Email đã được gửi tới {forgetEmail}</p>
-                            <p style={{ fontSize: 15, }}>Vui lòng kiểm tra email của bạn!</p>
+                          <div
+                            style={{
+                              margin: "50px 0 0 30px",
+                              alignItems: "center",
+                              display: "flex",
+                              flexDirection: "column",
+                            }}
+                          >
+                            <img
+                              src={SuccessEmailIcon}
+                              width={50}
+                              height={50}
+                              alt="Success"
+                              style={{ alignSelf: "center" }}
+                            />
+                            <p style={{ fontSize: 15, marginTop: 20 }}>
+                              Email đã được gửi tới {forgetEmail}
+                            </p>
+                            <p style={{ fontSize: 15 }}>
+                              Vui lòng kiểm tra email của bạn!
+                            </p>
                           </div>
-                          <div>
-                          </div>
+                          <div></div>
 
                           <div
                             className="field loginbtn-submit"
-                            style={{ paddingTop: "50px", display: "flex", justifyContent: "center" }}
+                            style={{
+                              paddingTop: "50px",
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
                           >
                             <button
                               className="button"
@@ -681,7 +700,6 @@ export default function Login({ openModal, closeModal }) {
                             >
                               Trở lại trang đăng nhập &nbsp;{" "}
                             </button>
-
                           </div>
                         </div>
                       </>
@@ -695,7 +713,11 @@ export default function Login({ openModal, closeModal }) {
                             autoComplete="off"
                             startAdornment={
                               <InputAdornment>
-                                <img width={24} height={24} src={EmailIcon}></img>
+                                <img
+                                  width={24}
+                                  height={24}
+                                  src={EmailIcon}
+                                ></img>
                               </InputAdornment>
                             }
                             value={forgetEmail}
@@ -739,29 +761,38 @@ export default function Login({ openModal, closeModal }) {
                             </button>
                             <div className="field" style={{ margin: 10 }}>
                               <p className="control">
-                                Trở lại {" "}
-                                <a href="#" onClick={() => setLoginOrReg("LOGIN")}>
+                                Trở lại{" "}
+                                <a
+                                  href="#"
+                                  onClick={() => setLoginOrReg("LOGIN")}
+                                >
                                   đăng nhập
                                 </a>
                               </p>
-
                             </div>
                           </div>
-
                         </div>
-
                       </>
                     )}
-
                   </div>
-                  <div style={{ width: "40%", alignContent: "center", alignItems: 'center' }}>
-                    <img src={ForgotPasswordImg} width={400} height={400} alt=""></img>
+                  <div
+                    style={{
+                      width: "40%",
+                      alignContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      src={ForgotPasswordImg}
+                      width={400}
+                      height={400}
+                      alt=""
+                    ></img>
                   </div>
                 </div>
               </ModalContent>
             </>
-          )
-          }
+          )}
         </Fade>
       </Modal>
     </div>
@@ -866,7 +897,8 @@ const InputRoot = styled("div")(
     color: ${theme.palette.mode === "dark" ? grey[300] : grey[500]};
     background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
     border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
-    box-shadow: 0px 2px 4px ${theme.palette.mode === "dark" ? "rgba(0,0,0, 0.5)" : "rgba(0,0,0, 0.05)"
+    box-shadow: 0px 2px 4px ${
+      theme.palette.mode === "dark" ? "rgba(0,0,0, 0.5)" : "rgba(0,0,0, 0.05)"
     };
     display: flex;
     align-items: center;
@@ -876,8 +908,9 @@ const InputRoot = styled("div")(
   
     &.${inputClasses.focused} {
       border-color: ${blue[400]};
-      box-shadow: 0 0 0 3px ${theme.palette.mode === "dark" ? blue[600] : blue[200]
-    };
+      box-shadow: 0 0 0 3px ${
+        theme.palette.mode === "dark" ? blue[600] : blue[200]
+      };
     }
   
     &:hover {

@@ -47,7 +47,7 @@ function ManageChat({
     const manager = localStorage.getItem("manager");
     const token = JSON.parse(manager)?.token;
     try {
-      const POST_CHAT_API = `https://e-tailorapi.azurewebsites.net/api/chat/order/${id}/send`;
+      const POST_CHAT_API = `https://localhost:7259/api/chat/order/${id}/send`;
       const formDta = new FormData();
       scrollToBottom();
       if (chat) {

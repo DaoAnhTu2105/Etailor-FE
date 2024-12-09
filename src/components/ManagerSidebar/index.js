@@ -47,8 +47,7 @@ export const ManagerSidebar = () => {
     localStorage.getItem("activeKey") || "/manager"
   );
   console.log("active", active);
-  const logoutAdminUrl =
-    "https://e-tailorapi.azurewebsites.net/api/auth/staff/logout";
+  const logoutAdminUrl = "https://localhost:7259/api/auth/staff/logout";
 
   const items = [
     {

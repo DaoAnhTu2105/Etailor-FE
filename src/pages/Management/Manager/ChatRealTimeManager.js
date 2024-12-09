@@ -9,7 +9,7 @@ export const ChatRealTimeManager = () => {
     let connection;
 
     const connectionInit = async () => {
-      const URL = "https://e-tailorapi.azurewebsites.net/chatHub";
+      const URL = "https://localhost:7259/chatHub";
       const manager = JSON.parse(localStorage.getItem("manager"));
 
       connection = new signalR.HubConnectionBuilder()

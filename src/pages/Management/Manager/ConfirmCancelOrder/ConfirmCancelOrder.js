@@ -37,7 +37,7 @@ export const ConfirmCancelOrder = ({
   const [caculatePaidMoney, setCalculatePaidMoney] = useState(null);
 
   const handleRefund = async (id, amount) => {
-    const urlCreateNew = `https://e-tailorapi.azurewebsites.net/api/payment/refund/${id}?amount=${amount}`;
+    const urlCreateNew = `https://localhost:7259/api/payment/refund/${id}?amount=${amount}`;
     try {
       const response = await fetch(`${urlCreateNew}`, {
         method: "POST",
