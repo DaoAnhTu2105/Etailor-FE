@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-
 import DefaultLayout from "../components/DefaultLayout";
 import Home from "../pages/Customer/Homepage/Home";
 import AdminRouters from "./AdminRouter";
@@ -13,7 +12,6 @@ import { DefaultLayoutAdmin } from "../components/DefaultLayoutAdmin";
 import { AccountStaff } from "../pages/Management/Admin/AccountStaff";
 import { SystemConfig } from "../pages/Management/Admin/SystemConfig";
 import CustomerProfile from "../pages/Customer/Profile";
-import CustomerSidebar from "../components/CustomerSidebar/CustomerSidebar";
 import UserProfileLayout from "../components/UserProfileLayout";
 import DefaultLayoutManager from "../components/DefaultLayoutManager";
 import ManagementStaff from "../pages/Management/Manager/ManagementStaff";
@@ -25,7 +23,6 @@ import ManagementMaterial, {
   ManagementMaterialType,
 } from "../pages/Management/Manager/ManagementMaterial";
 import ManagementDiscount from "../pages/Management/Manager/ManagementDiscount";
-
 import ProductDetail from "../pages/Customer/Catalogue/detail";
 import BodyProfile from "../pages/Customer/BodyProfile/BodyProfile";
 import ManagementProductTemplate, {
@@ -145,15 +142,6 @@ export const publicRouters = [
     component: BlogDetail,
     layout: DefaultLayout,
   },
-];
-
-export const privateRouters = [
-  // {
-  //     path: '/profile',
-  //     name: 'user-profile',
-  //     component: Profile,
-  //     layout: LayoutWithoutFilter,
-  // },
 ];
 
 export const adminRouters = [
@@ -331,28 +319,6 @@ export const RouterComponents = () => {
               />
             );
           })}
-          {/* <Route exact path="/" element={<PrivateRouters />}>
-                        {privateRouters.map((route, index) => {
-                            const Page = route.component
-                            let Layout = DefaultLayout
-                            if (route.layout) {
-                                Layout = route.layout
-                            } else if (route.layout === null) {
-                                Layout = Fragment
-                            }
-                            return (
-                                <Route
-                                    key={index}
-                                    path={route.path}
-                                    element={
-                                        <Layout>
-                                            <Page />
-                                        </Layout>
-                                    }
-                                />
-                            )
-                        })}
-                    </Route> */}
           <Route exact path="/" element={<AdminRouters />}>
             {adminRouters.map((route, index) => {
               const Page = route.component;
@@ -397,7 +363,6 @@ export const RouterComponents = () => {
               );
             })}
           </Route>
-
           <Route exact path="/" element={<CustomerRouter />}>
             {customerRouters.map((route, index) => {
               const Page = route.component;

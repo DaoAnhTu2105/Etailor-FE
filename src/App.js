@@ -1,11 +1,5 @@
 import { RouterComponents } from "./router";
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import GlobalStyle from "./GlobalStyle";
 import "./index.css";
 function App() {
